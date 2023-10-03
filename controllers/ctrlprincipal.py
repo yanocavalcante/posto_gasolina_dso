@@ -1,4 +1,4 @@
-from view.telaprincipal import TelaPrincipal
+from views.telaprincipal import TelaPrincipal
 
 
 class CtrlPrincipal:
