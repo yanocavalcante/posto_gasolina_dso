@@ -10,7 +10,7 @@ class CtrlPrincipal:
         op = tela.opcoes_do_sistema()
         self.processa_input(op)
 
-    def mostra_tela_movimentos(self):
+    def mostra_tela_notas(self):
         pass
 
     def mostra_tela_cadastros(self):
@@ -21,7 +21,7 @@ class CtrlPrincipal:
 
     def processa_input(self,op):
         if op == 1:
-            self.mostra_tela_movimentos()
+            self.mostra_tela_notas()
         elif op == 2:
             self.mostra_tela_cadastros()
         elif op == 3:
