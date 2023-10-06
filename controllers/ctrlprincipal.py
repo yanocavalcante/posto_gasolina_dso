@@ -3,7 +3,7 @@ from views.telaprincipal import TelaPrincipal
 
 class CtrlPrincipal:
     def __init__(self):
-        pass
+        self.__ctrlnotas = CtrlNotas()
 
     def mostra_tela_principal(self):
         tela = TelaPrincipal()
