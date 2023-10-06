@@ -2,8 +2,8 @@ from ctrlprincipal import CtrlPrincipal
 
 
 class CtrlNotas:
-    def __init__(self):
-        pass
+    def __init__(self, ctrlprincipal):
+        self.__ctrlprincipal = ctrlprincipal
 
     def pergunta_tipo_nota(self):
         pass
