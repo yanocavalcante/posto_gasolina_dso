@@ -3,10 +3,12 @@ from views.telaprincipal import TelaPrincipal
 
 class CtrlPrincipal:
     def __init__(self):
-        self.__ctrlnotas = CtrlNotas()
+        self.__ctrlnotas = CtrlNotas(self)
+        self.__ctrlcaixa = CtrlCaixa(self)
+        self.__ctrlcadastro = CtrlCadastro(self)
 
     def mostra_tela_principal(self):
-        tela = TelaPrincipal()
+        tela = TelaPrincipal(self)
         op = tela.opcoes_do_sistema()
         self.processa_input(op)
 
