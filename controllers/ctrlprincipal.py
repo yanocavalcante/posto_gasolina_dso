@@ -1,11 +1,13 @@
 from views.telaprincipal import TelaPrincipal
-
+from controllers.ctrlcadastros import CtrlCadastros
+from controllers.ctrlcaixas import CtrlCaixas
+from controllers.ctrlnotas import CtrlNotas
 
 class CtrlPrincipal:
     def __init__(self):
         self.__ctrlnotas = CtrlNotas(self)
-        self.__ctrlcaixa = CtrlCaixa(self)
-        self.__ctrlcadastro = CtrlCadastro(self)
+        self.__ctrlcaixa = CtrlCaixas(self)
+        self.__ctrlcadastro = CtrlCadastros(self)
 
     def mostra_tela_principal(self):
         tela = TelaPrincipal(self)
