@@ -9,6 +9,18 @@ class CtrlPrincipal:
         self.__ctrlcaixa = CtrlCaixas(self)
         self.__ctrlcadastro = CtrlCadastros(self)
 
+    @property
+    def ctrlnotas(self):
+        return self.__ctrlnotas
+    
+    @property
+    def ctrlcaixa(self):
+        return self.__ctrlcaixa
+    
+    @property
+    def ctrlcadastro(self):
+        return self.__ctrlcadastro
+
     def mostra_tela_principal(self):
         tela = TelaPrincipal(self)
         op = tela.opcoes_do_sistema()
