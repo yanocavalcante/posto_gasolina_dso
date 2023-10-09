@@ -1,6 +1,3 @@
-from ctrlprincipal import CtrlPrincipal
-
-
 class CtrlNotas:
     def __init__(self, ctrlprincipal):
         self.__ctrlprincipal = ctrlprincipal
