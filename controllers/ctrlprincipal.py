@@ -26,10 +26,15 @@ class CtrlPrincipal:
         op = self.__telaprincipal.opcoes_do_sistema()
         self.processa_input(op)
 
+    def encerra_sistema(self):
+        exit(1)
+
     def processa_input(self,op):
-        if op == 1:
-            self.mostra_tela_notas()
-        elif op == 2:
+        if op == '1':
+            self.__ctrlnotas.pergunta_tipo_nota()
+        elif op == '2':
             self.mostra_tela_cadastros()
-        elif op == 3:
+        elif op == '3':
             self.mostra_tela_financeiro()
+        elif op == '4':
+            self.encerra_sistema()
