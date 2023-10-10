@@ -31,15 +31,19 @@ class CtrlPrincipal:
 
         self.processa_input(op)
 
-    def encerra_sistema(self):
-        exit(1)
+    def mostra_tela_notas(self):
+        pass
 
-    def processa_input(self,op):
-        if op == '1':
-            self.__ctrlnotas.pergunta_tipo_nota()
-        elif op == '2':
+    def mostra_tela_cadastros(self):
+        CtrlCadastros().input_opcao_cadastros()
+
+    def mostra_tela_financeiro(self):
+        pass
+
+    def processa_input(self, op):
+        if op == 1:
+            self.mostra_tela_notas()
+        elif op == 2:
             self.mostra_tela_cadastros()
-        elif op == '3':
+        elif op == 3:
             self.mostra_tela_financeiro()
-        elif op == '4':
-            self.encerra_sistema()
