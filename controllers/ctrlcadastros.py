@@ -1,4 +1,4 @@
-from controllers.ctrlprincipal import CtrlPrincipal
+from views.tela_cadastro import TelaCadastros
 from views.tela_pessoa import TelaPessoa
 
 
@@ -8,9 +8,10 @@ class CtrlCadastros:
         
     
     def input_opcao_cadastros(self):
-        opcao = CtrlPrincipal.mostra_tela_cadastros()
+        opcao = TelaCadastros().mostra_opcoes()
         
         if opcao == 2:
-            opcao_pessoa = TelaPessoa.mostra_opcoes
+            opcao_pessoa = TelaPessoa().mostra_opcoes_pessoa()
             if opcao_pessoa == 1:
-                a
+                info_pessoa = TelaPessoa().input_cadastro_pessoa()
+                breakpoint()

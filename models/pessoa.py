@@ -1,9 +1,10 @@
 
 
 class Pessoa:
-    def __init__(self, nome: str, idade: int, telefone: str, funcionario: bool) -> None:
+    def __init__(self, nome: str, idade: int, cpf: str, telefone: str, funcionario: bool) -> None:
         self.__nome = nome
         self.__idade = idade
+        self.__cpf = cpf
         self.__telefone = telefone
         self.__funcionario = funcionario
 
@@ -16,6 +17,10 @@ class Pessoa:
     def idade(self) -> int:
         return self.__idade
     
+    @property
+    def cpf(self) -> str:
+        return self.__cpf
+
     @property
     def telefone(self) -> str:
         return self.__telefone
@@ -31,6 +36,10 @@ class Pessoa:
     @idade.setter
     def idade(self, idade):
         self.__idade = idade
+
+    @cpf.setter
+    def cpf(self, cpf):
+        self.__cpf = cpf
 
     @telefone.setter
     def telefone(self, telefone):
