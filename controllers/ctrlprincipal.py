@@ -30,7 +30,7 @@ class CtrlPrincipal:
         pass
 
     def mostra_tela_cadastros(self):
-        pass
+        CtrlCadastros.input_opcao_cadastros()
 
     def mostra_tela_financeiro(self):
         pass
