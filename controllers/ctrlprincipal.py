@@ -1,14 +1,11 @@
-from views.telaprincipal import TelaPrincipal
+from views.tela_principal import TelaPrincipal
 from controllers.ctrlcadastros import CtrlCadastros
 from controllers.ctrlcaixas import CtrlCaixas
 from controllers.ctrlnotas import CtrlNotas
 
 class CtrlPrincipal:
     def __init__(self):
-        self.__ctrlnotas = CtrlNotas(self)
-        self.__ctrlcaixa = CtrlCaixas(self)
-        self.__ctrlcadastro = CtrlCadastros(self)
-        self.__telaprincipal = TelaPrincipal()
+        pass
 
     @property
     def ctrlnotas(self):
@@ -23,7 +20,15 @@ class CtrlPrincipal:
         return self.__ctrlcadastro
 
     def mostra_tela_principal(self):
-        op = self.__telaprincipal.opcoes_do_sistema()
+        op = TelaPrincipal.opcoes_do_sistema()
+        try:
+            op = int(op)
+
+            if op not in [1, 2, 3, 4]:
+                raise ValueError
+        except ValueError:
+            self.mostra_tela_principal()
+
         self.processa_input(op)
 
     def encerra_sistema(self):
