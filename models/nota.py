@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 
 class Nota(ABC):
     @abstractmethod
-    def __init__(self):
+    def __init__(self, produtos, num, caixa, valor):
         self.__produtos = []
         self.__num = num
         self.__caixa = caixa
