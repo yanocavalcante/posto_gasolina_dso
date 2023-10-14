@@ -5,7 +5,10 @@ from controllers.ctrlnotas import CtrlNotas
 
 class CtrlPrincipal:
     def __init__(self):
-        pass
+        self.__ctrlcadastros = CtrlCadastros(self)
+        self.__ctrlcaixas = CtrlCaixas(self)
+        self.__ctrlnotas = CtrlNotas(self)
+        self.__telaprincipal = TelaPrincipal()
 
     @property
     def ctrlnotas(self):
@@ -13,14 +16,14 @@ class CtrlPrincipal:
     
     @property
     def ctrlcaixa(self):
-        return self.__ctrlcaixa
+        return self.__ctrlcaixas
     
     @property
     def ctrlcadastro(self):
-        return self.__ctrlcadastro
+        return self.__ctrlcadastros
 
     def mostra_tela_principal(self):
-        op = TelaPrincipal.opcoes_do_sistema()
+        op = self.__telaprincipal.opcoes_do_sistema()
         try:
             op = int(op)
 
@@ -32,13 +35,13 @@ class CtrlPrincipal:
         self.processa_input(op)
 
     def mostra_tela_notas(self):
-        pass
+        self.ctrlnotas.pergunta_tipo_nota()
 
     def mostra_tela_cadastros(self):
-        CtrlCadastros().input_opcao_cadastros()
+        self.ctrlcadastro.input_opcao_cadastros()
 
     def mostra_tela_financeiro(self):
-        pass
+        self.ctrlcaixa.pergunta_acao()
 
     def processa_input(self, op):
         if op == 1:
