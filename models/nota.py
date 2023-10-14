@@ -5,12 +5,17 @@ class Nota(ABC):
     @abstractmethod
     def __init__(self):
         self.__produtos = []
+        self.__num = num
         self.__caixa = caixa
         self.__valor = valor
     
     @property
     def produtos(self):
         return self.__produtos
+    
+    @property
+    def num(self):
+        return self.__num
     
     @property
     def caixa(self):

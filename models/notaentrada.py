@@ -1,4 +1,4 @@
-from nota import Nota
+from models.nota import Nota
 
 
 class NotaEntrada(Nota):

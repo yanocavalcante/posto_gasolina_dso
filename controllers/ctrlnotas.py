@@ -1,4 +1,4 @@
-from views.telanota import TelaNotas
+from views.tela_nota import TelaNotas
 from models.notaentrada import NotaEntrada
 from models.notasaida import NotaSaida
 
@@ -13,7 +13,7 @@ class CtrlNotas:
     def pergunta_tipo_nota(self):
         op = self.__telanota.mostra_tipo_notas()
         self.processa_input_tipo(op)
-    
+
     def cadastra_notaSaida(self):
         cliente, caixa, produtos = self.__telanota.input_notaSaida()
         nota = NotaSaida(cliente, caixa, produtos)
@@ -25,6 +25,6 @@ class CtrlNotas:
     def processa_input_tipo(self, op):
         if op == 1:
             self.cadastra_notaSaida
-        
+
         elif op == 2:
             self.cadastra_notaEntrada
