@@ -5,7 +5,7 @@ from controllers.ctrlnotas import CtrlNotas
 
 class CtrlPrincipal:
     def __init__(self):
-        self.__ctrlcadastros = CtrlCadastros(self)
+        #self.__ctrlcadastros = CtrlCadastros(self)
         self.__ctrlcaixas = CtrlCaixas(self)
         self.__ctrlnotas = CtrlNotas(self)
         self.__telaprincipal = TelaPrincipal()
@@ -20,7 +20,7 @@ class CtrlPrincipal:
     
     @property
     def ctrlcadastro(self):
-        return self.__ctrlcadastros
+        pass
 
     def mostra_tela_principal(self):
         op = self.__telaprincipal.opcoes_do_sistema()
@@ -38,10 +38,13 @@ class CtrlPrincipal:
         self.ctrlnotas.pergunta_tipo_nota()
 
     def mostra_tela_cadastros(self):
-        self.ctrlcadastro.input_opcao_cadastros()
+        CtrlCadastros().input_opcao_cadastros()
 
     def mostra_tela_financeiro(self):
         self.ctrlcaixa.pergunta_acao()
+
+    def encerra_sistema(self):
+        exit(1)
 
     def processa_input(self, op):
         if op == 1:
@@ -50,3 +53,5 @@ class CtrlPrincipal:
             self.mostra_tela_cadastros()
         elif op == 3:
             self.mostra_tela_financeiro()
+        elif op == 4:
+            self.encerra_sistema()
