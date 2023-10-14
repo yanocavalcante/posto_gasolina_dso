@@ -43,6 +43,9 @@ class CtrlPrincipal:
     def mostra_tela_financeiro(self):
         self.ctrlcaixa.pergunta_acao()
 
+    def encerra_sistema(self):
+        exit(1)
+        
     def processa_input(self, op):
         if op == 1:
             self.mostra_tela_notas()
@@ -50,3 +53,5 @@ class CtrlPrincipal:
             self.mostra_tela_cadastros()
         elif op == 3:
             self.mostra_tela_financeiro()
+        elif op == 4:
+            self.encerra_sistema()
