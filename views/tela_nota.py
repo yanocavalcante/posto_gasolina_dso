@@ -23,14 +23,12 @@ class TelaNotas:
     def input_notaSaida(self):
         print('NOTA DE SAÍDA')
         cliente = input('Cliente:')
-        caixa = input('Caixa:')    #criar atalho pelo ctrlprincipal para a função de ctrlcaixas 
         produtos = self.listagem_produtos()
-        return cliente, caixa, produtos
+        return cliente, produtos
 
     def input_notaEntrada(self):
         print('NOTA DE ENTRADA')
         fornecedor = input('Fornecedor:')
-        caixa = input('Caixa:')         #criar atalho pelo ctrlprincipal para a função de ctrlcaixas
         produtos = self.listagem_produtos()
-        return fornecedor, caixa, produtos
+        return fornecedor, produtos
         
