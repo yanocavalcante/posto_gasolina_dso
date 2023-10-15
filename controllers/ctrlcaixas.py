@@ -12,17 +12,20 @@ class CtrlCaixas:
         caixa = self.__telacaixa.seleciona_caixa()
         for caixas in self.__listacaixas:
             if caixa == caixas.nome:
-                pass
-        
+                return caixa
+        return         
 
     def cria_caixa(self):
         tipo, nome, saldo, credito = self.__telacaixa.input_info_caixa()
         caixa = Caixa(tipo, nome, saldo, credito)
         self.__listacaixas.append(caixa)
-        
     
     def retornar(self):
         self.__ctrlprincipal.mostra_tela_principal()
+    
+    def adiciona_movimento(self, nota):
+        caixa = self.pergunta_caixa()
+        caixa.listamovimentos.append(nota)
 
     def pergunta_acao(self):
         op = self.__telacaixa.seleciona_acao()
