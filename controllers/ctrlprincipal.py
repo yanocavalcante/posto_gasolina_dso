@@ -15,7 +15,7 @@ class CtrlPrincipal:
         return self.__ctrlnotas
     
     @property
-    def ctrlcaixa(self):
+    def ctrlcaixas(self):
         return self.__ctrlcaixas
     
     @property
@@ -40,8 +40,8 @@ class CtrlPrincipal:
     def mostra_tela_cadastros(self):
         CtrlCadastros().input_opcao_cadastros()
 
-    def mostra_tela_financeiro(self):
-        self.ctrlcaixa.pergunta_acao()
+    def mostra_tela_caixas(self):
+        self.ctrlcaixas.pergunta_acao()
 
     def encerra_sistema(self):
         exit(1)
@@ -52,6 +52,6 @@ class CtrlPrincipal:
         elif op == 2:
             self.mostra_tela_cadastros()
         elif op == 3:
-            self.mostra_tela_financeiro()
+            self.mostra_tela_caixas()
         elif op == 4:
             self.encerra_sistema()
