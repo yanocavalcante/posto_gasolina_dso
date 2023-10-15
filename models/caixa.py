@@ -4,6 +4,7 @@ class Caixa:
         self.__tipo = tipo
         self.__nome = nome
         self.__credito = credito
+        self.__listamovimentos = []
 
     @property
     def saldo(self):
@@ -20,3 +21,7 @@ class Caixa:
     @property
     def credito(self):
         return self.__credito
+    
+    @property
+    def listamovimentos(self):
+        return self.__listamovimentos

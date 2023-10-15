@@ -24,14 +24,6 @@ class CtrlPrincipal:
 
     def mostra_tela_principal(self):
         op = self.__telaprincipal.opcoes_do_sistema()
-        try:
-            op = int(op)
-
-            if op not in [1, 2, 3, 4]:
-                raise ValueError
-        except ValueError:
-            self.mostra_tela_principal()
-
         self.processa_input(op)
 
     def mostra_tela_notas(self):
