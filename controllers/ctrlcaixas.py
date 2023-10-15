@@ -13,11 +13,16 @@ class CtrlCaixas:
         for caixas in self.__listacaixas:
             if caixa == caixas.nome:
                 pass
+        
 
     def cria_caixa(self):
         tipo, nome, saldo, credito = self.__telacaixa.input_info_caixa()
         caixa = Caixa(tipo, nome, saldo, credito)
         self.__listacaixas.append(caixa)
+        
+    
+    def retornar(self):
+        self.__ctrlprincipal.mostra_tela_principal()
 
     def pergunta_acao(self):
         op = self.__telacaixa.seleciona_acao()
@@ -26,3 +31,6 @@ class CtrlCaixas:
         
         elif op == 2:
             self.pergunta_caixa()
+        
+        elif op == 3:
+            self.retornar()
