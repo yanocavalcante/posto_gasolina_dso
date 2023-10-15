@@ -24,7 +24,7 @@ class CtrlNotas:
 
     def processa_input_tipo(self, op):
         if op == 1:
-            self.cadastra_notaSaida
+            self.cadastra_notaSaida()
 
         elif op == 2:
-            self.cadastra_notaEntrada
+            self.cadastra_notaEntrada()
