@@ -12,8 +12,8 @@ class TelaCaixa(TelaPrincipal):
     def seleciona_acao(self):
         self.limparTela()
         self.cabecalho('Caixas')
-        print('1 - Cadastrar    2 - Consultar       3 - Voltar')
-        op = int(input())
+        print('1 - Cadastrar        2 - Consultar        3 - Voltar')
+        op = self.le_opcoes([1,2,3])
         return op
     
     def input_info_caixa(self):
@@ -21,10 +21,10 @@ class TelaCaixa(TelaPrincipal):
         self.cabecalho('Caixas')
         self.subcabecalho('Tipos')
         print('1 - Físico       2 - Bancário')
-        tipo = input()
+        tipo = self.le_opcoes([1,2])
         nome = input('Nome:')
         saldo = float(input('Saldo Inicial:'))
-        if tipo == '2':
+        if tipo == 2:
             tipo = 'Bancário'
             credito = 'Crédito:'
         else:
