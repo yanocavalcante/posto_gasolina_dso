@@ -11,9 +11,11 @@ class TelaCaixa(TelaPrincipal):
     
     def cancela_operacao(self):
         print('A operação foi cancelada! Tente Novamente.')
+        sleep(5)
     
     def caixa_n_encontrado(self):
         print('O caixa selecionado não existe!')
+        sleep(5)
 
     def uso_saldo(self, saldo_utilizado):
         print(f'{saldo_utilizado} reais foram utilizados do Crédito')
