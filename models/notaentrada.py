@@ -12,6 +12,5 @@ class NotaEntrada(Nota):
         return self.__valor
     
     def calcula_valor_entrada(self):
-        self.valor = 0
         for produto in self.produtos:
             self.valor = self.valor - (produto['nome'].custo * produto['qnt'])

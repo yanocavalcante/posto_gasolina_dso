@@ -376,23 +376,20 @@ class CtrlCadastros:
     def voltar(self):
         self.input_opcao_cadastros()
 
-    def verifica_lista_clientes(self):
-        if self.lista_pessoas == []:
-            return None
-        else:
-            return self.lista_pessoas
+    def verifica_lista_clientes(self, cliente):
+        for clientes in self.lista_pessoas:
+            if clientes.nome == cliente.nome:
+                return clientes
 
-
-    def verifica_lista_produtos(self):
-        if self.lista_produtos == []:
-            return None
-        else:
-            return self.lista_produtos
-        
+    def verifica_lista_produtos(self, produto):
+        for produtos in self.lista_produtos:
+            if produtos.nome == produto.nome:
+                return produtos
+            
     def diminuir_estoque(self, valor_diminuir, produto):
         if valor_diminuir > produto.estoque:
             print("Impossível realizar essa operação! Valor maior que o estoque do produto!")
-            return None
+            return 
         else:
             produto.estoque -= valor_diminuir
 
