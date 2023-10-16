@@ -10,12 +10,13 @@ class TelaPessoa:
         print("2 - Alterar Pessoa")
         print("3 - Excluir Pessoa")
         print("4 - Listar Pessoas")
+        print("5 - Voltar")
         opcao = input("Digite a opção desejada: ")
 
         try:
             opcao = int(opcao)
 
-            if opcao not in [1, 2, 3, 4]:
+            if opcao not in [1, 2, 3, 4, 5]:
                 raise ValueError
         except ValueError:
             return self.mostra_opcoes_pessoa()

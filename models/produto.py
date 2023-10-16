@@ -1,13 +1,14 @@
 
 
 class Produto:
-    def __init__(self, categoria: str, nome: str, fornecedor: str, custo: float, preco: float, estoque: int) -> None:
+    def __init__(self, categoria: str, nome: str, fornecedor: str, custo: float, preco: float, estoque: int, id: int) -> None:
         self.__categoria = categoria
         self.__nome = nome
         self.__fornecedor = fornecedor
         self.__custo = custo
         self.__preco = preco
         self.__estoque = estoque
+        self.__id = id
 
 
     @property
@@ -33,6 +34,10 @@ class Produto:
     @property
     def estoque(self) -> int:
         return self.__estoque
+    
+    @property
+    def id(self) -> int:
+        return self.__id
     
     @categoria.setter
     def categoria(self, categoria):
