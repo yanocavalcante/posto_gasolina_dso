@@ -9,6 +9,7 @@ class CtrlPrincipal:
         self.__ctrlcaixas = CtrlCaixas(self)
         self.__ctrlnotas = CtrlNotas(self)
         self.__telaprincipal = TelaPrincipal()
+        self.__ctrlcadastros = CtrlCadastros(self)
 
     @property
     def ctrlnotas(self):
@@ -20,7 +21,7 @@ class CtrlPrincipal:
     
     @property
     def ctrlcadastro(self):
-        pass
+        return self.__ctrlcadastros
 
     def mostra_tela_principal(self):
         op = self.__telaprincipal.opcoes_do_sistema()
@@ -30,7 +31,7 @@ class CtrlPrincipal:
         self.ctrlnotas.pergunta_tipo_nota()
 
     def mostra_tela_cadastros(self):
-        CtrlCadastros().input_opcao_cadastros()
+        self.ctrlcadastro.input_opcao_cadastros()
 
     def mostra_tela_caixas(self):
         self.ctrlcaixas.pergunta_acao()
