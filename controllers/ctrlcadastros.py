@@ -392,6 +392,7 @@ class CtrlCadastros:
     def diminuir_estoque(self, valor_diminuir, produto):
         if valor_diminuir > produto.estoque:
             print("Impossível realizar essa operação! Valor maior que o estoque do produto!")
+            return None
         else:
             produto.estoque -= valor_diminuir
 
