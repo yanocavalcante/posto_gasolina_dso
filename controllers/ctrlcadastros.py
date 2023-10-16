@@ -394,4 +394,6 @@ class CtrlCadastros:
             produto.estoque -= valor_diminuir
 
     def aumentar_estoque(self, valor_aumentar, produto):
-        produto.estoque += valor_aumentar
+        for prod in self.lista_produtos:
+            if prod.nome == produto:
+                prod.estoque += valor_aumentar

@@ -25,6 +25,11 @@ class Caixa:
     @property
     def listamovimentos(self):
         return self.__listamovimentos
-    
+
+    @saldo.setter
+    def saldo(self, saldo):
+        self.__saldo = saldo
+
+
     def calcula_novo_saldo(self, nota):
-        self.saldo = self.saldo + nota.valor
+        self.__saldo += nota.valor
