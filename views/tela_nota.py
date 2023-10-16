@@ -11,7 +11,7 @@ class TelaNotas(TelaPrincipal):
 
     def listagem_produtos(self):
         produtos = []
-        print('PRODUTOS')
+        self.subcabecalho('PRODUTOS')
         while True:
             nome = input('Nome:')
             qnt = int(input('Quantidade:'))
@@ -24,13 +24,14 @@ class TelaNotas(TelaPrincipal):
         return produtos
 
     def input_notaSaida(self):
-        print('NOTA DE SAÍDA')
+        self.subcabecalho('NOTA DE SAÍDA')
         cliente = input('Cliente:')
+        self.subcabecalho('')
         produtos = self.listagem_produtos()
         return cliente, produtos
 
     def input_notaEntrada(self):
-        print('NOTA DE ENTRADA')
+        self.subcabecalho('NOTA DE ENTRADA')
         fornecedor = input('Fornecedor:')
         produtos = self.listagem_produtos()
         return fornecedor, produtos

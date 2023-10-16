@@ -36,6 +36,19 @@ class CtrlCaixas:
     
     def adiciona_movimento(self, nota):
         caixa = self.pergunta_caixa()
+        if nota.valor < 0:
+            if caixa.tipo == 'Físico':
+                if (caixa.saldo + nota.valor) < 0:
+                    self.__telacaixa.cancela_operacao()
+                    return
+            elif caixa.tipo == 'Bancário':
+                if (caixa.saldo + nota.valor) < 0:
+                    saldo_negativo = (caixa.saldo + nota.valor) + caixa.credito
+                    self.__telacaixa.uso_saldo(saldo_negativo)
+
+                elif (caixa.saldo + caixa.credito) + (nota.valor) < 0:
+                    self.__telacaixa.cancela_operacao()
+                    return
         caixa.listamovimentos.append(nota)
         caixa.calcula_novo_saldo(nota)
 
