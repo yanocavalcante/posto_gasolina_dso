@@ -42,3 +42,7 @@ class TelaCadastros:
         idade = input("Nova idade: ")
 
         return nome, idade, cpf, telefone
+    
+    def input_id_para_excluir(self):
+        id_para_excluir = input("Digite o id da pessoa que deseja excluir: ")
+        return id_para_excluir
