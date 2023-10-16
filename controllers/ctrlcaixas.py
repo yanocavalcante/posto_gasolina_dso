@@ -15,10 +15,10 @@ class CtrlCaixas:
     def pergunta_caixa(self):
         caixa = self.__telacaixa.seleciona_caixa()
         for caixas in self.listacaixas:
-            print('Entrou no For')
             if caixa == caixas.nome:
                 return caixas
-        print('Não Funcionou')
+        self.__telacaixa.caixa_n_encontrado()
+        self.pergunta_caixa()
 
     def consulta_caixa(self):
         caixa = self.pergunta_caixa()
