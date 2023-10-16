@@ -15,15 +15,17 @@ class CtrlNotas:
         self.processa_input_tipo(op)
 
     def cadastra_notaSaida(self):
-        cliente, caixa, produtos = self.__telanota.input_notaSaida()
-        nota = NotaSaida(caixa, produtos, cliente)
+        cliente, produtos = self.__telanota.input_notaSaida()
+        nota = NotaSaida(produtos, cliente)
         self.__notassaida.append(nota)
+        self.__ctrlprincipal.ctrlcaixas.adiciona_movimento(nota)
         self.retornar()
         
     def cadastra_notaEntrada(self):
-        fornecedor, caixa, produtos = self.__telanota.input_notaEntrada()
-        nota = NotaEntrada(caixa, produtos, fornecedor)
+        fornecedor, produtos = self.__telanota.input_notaEntrada()
+        nota = NotaEntrada(produtos, fornecedor)
         self.__notasentrada.append(nota)
+        self.__ctrlprincipal.ctrlcaixas.adiciona_movimento(nota)
         self.retornar()
         
     def retornar(self):
