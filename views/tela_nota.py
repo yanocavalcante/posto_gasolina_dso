@@ -1,4 +1,4 @@
-from views.tela_principal import TelaPrincipal
+from views.tela_principal import TelaPrincipal, sleep
 
 class TelaNotas(TelaPrincipal):
 
@@ -8,6 +8,18 @@ class TelaNotas(TelaPrincipal):
         print('1 - Saída        2 - Entrada        3 - Retornar')
         op = self.le_opcoes([1,2,3])
         return op
+    
+    def le_opcoes(self, ops):
+        try:
+            op = int(input())
+            if op in ops:
+                return op
+            else:
+                raise Exception
+        except Exception:
+            print('Valor Inválido. Reinicie a listagem de produtos.')
+            sleep(2)
+            self.listagem_produtos()
 
     def listagem_produtos(self):
         produtos = []
