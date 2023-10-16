@@ -1,23 +1,30 @@
-class TelaCaixa:
+from views.tela_principal import TelaPrincipal
+
+
+class TelaCaixa(TelaPrincipal):
+
     def seleciona_caixa(self):
-        print('CAIXAS')
+        self.limparTela()
+        self.cabecalho('Caixas')
         caixa = input('Caixa:')
         return caixa
     
     def seleciona_acao(self):
-        print('CAIXAS')
-        print('1 - Cadastrar    2 - Consultar       3 - Voltar')
-        op = int(input())
+        self.limparTela()
+        self.cabecalho('Caixas')
+        print('1 - Cadastrar        2 - Consultar        3 - Voltar')
+        op = self.le_opcoes([1,2,3])
         return op
     
     def input_info_caixa(self):
-        print('CAIXAS')
-        print('Tipos')
+        self.limparTela()
+        self.cabecalho('Caixas')
+        self.subcabecalho('Tipos')
         print('1 - Físico       2 - Bancário')
-        tipo = input()
+        tipo = self.le_opcoes([1,2])
         nome = input('Nome:')
         saldo = float(input('Saldo Inicial:'))
-        if tipo == '2':
+        if tipo == 2:
             tipo = 'Bancário'
             credito = 'Crédito:'
         else:

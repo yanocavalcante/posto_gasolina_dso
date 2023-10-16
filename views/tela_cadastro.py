@@ -1,4 +1,4 @@
-
+from views.tela_principal import TelaPrincipal
 
 class TelaCadastros:
     def __init__(self) -> None:

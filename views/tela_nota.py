@@ -1,9 +1,12 @@
-class TelaNotas:
+from views.tela_principal import TelaPrincipal
+
+class TelaNotas(TelaPrincipal):
 
     def mostra_tipo_notas(self):
-        print('NOTAS')
+        self.limparTela()
+        self.cabecalho('Notas')
         print('1 - Saída        2 - Entrada        3 - Retornar')
-        op = int(input())
+        op = self.le_opcoes([1,2,3])
         return op
 
     def listagem_produtos(self):
@@ -15,7 +18,7 @@ class TelaNotas:
             produto = {'nome': nome, 'qnt': qnt}
             produtos.append(produto)
             print('1 - Adicionar Produto        2 - Finalizar')
-            act = int(input())
+            act = self.le_opcoes([1,2])
             if act == 2:
                 break
         return produtos
@@ -23,14 +26,12 @@ class TelaNotas:
     def input_notaSaida(self):
         print('NOTA DE SAÍDA')
         cliente = input('Cliente:')
-        caixa = input('Caixa:')    #criar atalho pelo ctrlprincipal para a função de ctrlcaixas 
         produtos = self.listagem_produtos()
-        return cliente, caixa, produtos
+        return cliente, produtos
 
     def input_notaEntrada(self):
         print('NOTA DE ENTRADA')
         fornecedor = input('Fornecedor:')
-        caixa = input('Caixa:')         #criar atalho pelo ctrlprincipal para a função de ctrlcaixas
         produtos = self.listagem_produtos()
-        return fornecedor, caixa, produtos
+        return fornecedor, produtos
         
