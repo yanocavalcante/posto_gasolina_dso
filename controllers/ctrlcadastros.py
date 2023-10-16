@@ -73,7 +73,9 @@ class CtrlCadastros:
             elif opcao_pessoa == 4:
                 self.mostra_lista_pessoas()
                 
-                
+                input("Digite qualquer coisa para voltar: ")
+
+                self.__controlador_principal.mostra_tela_principal()
 
         elif opcao == 3:
             
