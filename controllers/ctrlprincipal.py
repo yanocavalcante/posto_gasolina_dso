@@ -9,7 +9,6 @@ class CtrlPrincipal:
         self.__ctrlcaixas = CtrlCaixas(self)
         self.__ctrlnotas = CtrlNotas(self)
         self.__telaprincipal = TelaPrincipal()
-        self.__ctrlcadastros = CtrlCadastros(self)
 
     @property
     def ctrlnotas(self):

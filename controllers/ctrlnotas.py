@@ -6,8 +6,7 @@ from models.notasaida import NotaSaida
 class CtrlNotas:
     def __init__(self, ctrlprincipal):
         self.__ctrlprincipal = ctrlprincipal
-        self.__notassaida = []
-        self.__notasentrada = []
+        self.__notas = []
         self.__telanota = TelaNotas()
 
     def pergunta_tipo_nota(self):
@@ -16,17 +15,25 @@ class CtrlNotas:
 
     def cadastra_notaSaida(self):
         cliente, produtos = self.__telanota.input_notaSaida()
-        nota = NotaSaida(produtos, cliente)
-        self.__notassaida.append(nota)
+        num = self.calcula_num_nota()
+        nota = NotaSaida(num, produtos, cliente)
+        self.__notas.append[nota]
+        nota.calcula_valor_saida
         self.__ctrlprincipal.ctrlcaixas.adiciona_movimento(nota)
         self.retornar()
         
     def cadastra_notaEntrada(self):
         fornecedor, produtos = self.__telanota.input_notaEntrada()
-        nota = NotaEntrada(produtos, fornecedor)
-        self.__notasentrada.append(nota)
+        num = self.calcula_num_nota()
+        nota = NotaEntrada(num, produtos, fornecedor)
+        self.__notas.append(nota)
+        nota.calcula_valor_entrada()
         self.__ctrlprincipal.ctrlcaixas.adiciona_movimento(nota)
         self.retornar()
+
+    def calcula_num_nota(self):
+        num = len(self.__notas) + 1
+        return num
         
     def retornar(self):
         self.__ctrlprincipal.mostra_tela_principal()

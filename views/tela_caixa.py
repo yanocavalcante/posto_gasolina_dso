@@ -1,4 +1,4 @@
-from views.tela_principal import TelaPrincipal
+from views.tela_principal import TelaPrincipal, sleep
 
 
 class TelaCaixa(TelaPrincipal):
@@ -6,7 +6,7 @@ class TelaCaixa(TelaPrincipal):
     def seleciona_caixa(self):
         self.limparTela()
         self.cabecalho('Caixas')
-        caixa = input('Caixa:')
+        caixa = str(input('Caixa:'))
         return caixa
     
     def seleciona_acao(self):
@@ -31,3 +31,10 @@ class TelaCaixa(TelaPrincipal):
             tipo = 'Físico'
             credito = None
         return tipo, nome, saldo, credito
+    
+    def imprime_historico(self, listamovimentos, caixa):
+        self.cabecalho(f'Histórico - {caixa.nome}')
+        for nota in listamovimentos:
+            print(nota.num, '-', nota.valor)
+        print(caixa.saldo)
+        sleep(5)

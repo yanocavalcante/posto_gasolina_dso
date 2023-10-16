@@ -25,7 +25,6 @@ class TelaPrincipal:
     def opcoes_do_sistema(self):
         self.limparTela()
         self.cabecalho('Menu Principal')
-        print('')
         print('1 - Notas       2 - Cadastros      3 - Caixas       4 - Sair')
         op = self.le_opcoes([1,2,3,4])
         
