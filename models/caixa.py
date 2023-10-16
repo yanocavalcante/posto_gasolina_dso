@@ -1,5 +1,5 @@
 class Caixa:
-    def __init__(self, saldo, tipo, nome, credito = None):
+    def __init__(self, tipo, nome, saldo, credito = None):
         self.__saldo = saldo
         self.__tipo = tipo
         self.__nome = nome
@@ -25,3 +25,6 @@ class Caixa:
     @property
     def listamovimentos(self):
         return self.__listamovimentos
+    
+    def calcula_novo_saldo(self, nota):
+        self.saldo = self.saldo + nota.valor
