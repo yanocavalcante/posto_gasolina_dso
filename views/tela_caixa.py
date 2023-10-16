@@ -12,9 +12,9 @@ class TelaCaixa(TelaPrincipal):
     def cancela_operacao(self):
         print('A operação foi cancelada. Tente Novamente.')
 
-    def uso_saldo(self, saldo_negativo):
-        print(f'{saldo_negativo} reais foram utilizado do Crédito')
-        
+    def uso_saldo(self, saldo_utilizado):
+        print(f'{saldo_utilizado} reais foram utilizados do Crédito')
+
     def seleciona_acao(self):
         self.limparTela()
         self.cabecalho('Caixas')
@@ -44,4 +44,4 @@ class TelaCaixa(TelaPrincipal):
         for nota in listamovimentos:
             print(nota.num, '-', nota.valor)
         print(f'Saldo final: {caixa.saldo}')
-        sleep(5)
+        sleep(7)
