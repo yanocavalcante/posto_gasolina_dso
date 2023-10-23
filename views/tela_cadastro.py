@@ -7,8 +7,8 @@ class TelaCadastros(TelaPrincipal):
         self.limparTela()
         self.cabecalho('Cadastros')
         self.subcabecalho('Tipos')
-        print("1 - Produtos       2 - Funcionários       3 - Clientes       4 - Voltar")
-        op = self.le_opcoes([1,2,3,4])
+        print("1 - Produtos       2 - Pessoas       3 - Voltar")
+        op = self.le_opcoes([1,2,3,])
         return op
     
     def input_id_para_alterar(self):
