@@ -8,6 +8,13 @@ class CtrlCaixas:
         self.__telacaixa = TelaCaixa()
         self.__listacaixas = []
 
+        #delete-me
+        self.instancia_teste()
+    
+    def instancia_teste(self):
+        posto = Caixa('Físico', 'Posto', 2000)
+        self.__listacaixas.append(posto)
+
     @property
     def listacaixas(self):
         return self.__listacaixas

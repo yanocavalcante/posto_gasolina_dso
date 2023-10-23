@@ -12,6 +12,15 @@ class CtrlCadastros:
         self.__tela_produto = TelaProduto()
         self.__tela_cadastros = TelaCadastros()
         self.__controlador_principal = controlador_principal
+        
+        #delete-me
+        self.instancia_teste()
+
+    def instancia_teste(self):
+        gasolina = Produto('Combustível', 'Gasolina', 'Atem', 5, 6, 2000, 1)
+        yano = Cliente('Yano', 15, '12312312312', '12312312312', 2)
+        self.__lista_pessoas.append(yano)
+        self.__lista_produtos.append(gasolina)
 
     @property
     def lista_pessoas(self):
