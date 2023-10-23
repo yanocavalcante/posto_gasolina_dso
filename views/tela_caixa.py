@@ -46,7 +46,8 @@ class TelaCaixa(TelaPrincipal):
     def imprime_historico(self, listamovimentos, caixa):
         self.cabecalho(f'Histórico - {caixa.nome}')
         self.subcabecalho(f'Tipo: {caixa.tipo}')
+        print('N° da nota ===== Valor')
         for nota in listamovimentos:
-            print(nota.num, '-', nota.valor)
+            print(nota.num, '=====', nota.valor)
         print(f'Saldo final: {caixa.saldo}')
         sleep(7)

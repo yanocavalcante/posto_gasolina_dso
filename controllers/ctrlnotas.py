@@ -14,26 +14,40 @@ class CtrlNotas:
         self.processa_input_tipo(op)
 
     def cadastra_notaSaida(self):
-        cliente, produtos = self.__telanota.input_notaSaida()
+        op = True
+        list_prod_nota = list()
+        while op == True:
+            nome, qnt, op = self.__telanota.input_notaSaida()
+            obj_prod = self.__ctrlprincipal.ctrlcadastros.verifica_lista_produtos(nome)
+            produto = {'prod': obj_prod, 'qnt': qnt}
+            list_prod_nota.append(produto)
         num = self.calcula_num_nota()
+        cliente = self.__telanota.input_cliente()
         cliente = self.__ctrlprincipal.ctrlcadastros.verifica_lista_clientes(cliente)
-        nota = NotaSaida(num, produtos, cliente)
-        self.__notas.append[nota]
+        nota = NotaSaida(num, list_prod_nota, cliente)
+        self.__notas.append(nota)
         nota.calcula_valor_saida
         self.__ctrlprincipal.ctrlcaixas.adiciona_movimento(nota)
-        for produto in produtos:
-            self.__ctrlprincipal.ctrlcadastros.diminuir_estoque(produto['qnt'], produto['nome'].nome)
+        for produto in list_prod_nota:
+            self.__ctrlprincipal.ctrlcadastros.diminuir_estoque(produto['qnt'], produto['prod'].nome)
         self.retornar()
         
     def cadastra_notaEntrada(self):
-        fornecedor, produtos = self.__telanota.input_notaEntrada()
+        op = True
+        list_prod_nota = list()
+        while op == True:
+            nome, qnt, op = self.__telanota.input_notaEntrada()
+            obj_prod = self.__ctrlprincipal.ctrlcadastros.verifica_lista_produtos(nome)
+            produto = {'prod': obj_prod, 'qnt': qnt}
+            list_prod_nota.append(produto)
         num = self.calcula_num_nota()
-        nota = NotaEntrada(num, produtos, fornecedor)
-        self.__notas.append(nota)
+        fornecedor = self.__telanota.input_fornecedor()
+        nota = NotaEntrada(num, list_prod_nota, fornecedor)
         nota.calcula_valor_entrada()
+        self.__notas.append(nota)
         self.__ctrlprincipal.ctrlcaixas.adiciona_movimento(nota)
-        for produto in produtos:
-            self.__ctrlprincipal.ctrlcadastros.aumentar_estoque(produto['qnt'], produto['nome'])
+        for produto in list_prod_nota:
+            self.__ctrlprincipal.ctrlcadastros.aumentar_estoque(produto['qnt'], produto['prod'])
         self.retornar()
 
     def calcula_num_nota(self):

@@ -387,12 +387,12 @@ class CtrlCadastros:
 
     def verifica_lista_clientes(self, cliente):
         for clientes in self.lista_pessoas:
-            if clientes.nome == cliente.nome:
+            if clientes.nome == cliente:
                 return clientes
 
     def verifica_lista_produtos(self, produto):
         for produtos in self.lista_produtos:
-            if produtos.nome == produto.nome:
+            if produtos.nome == produto:
                 return produtos
             
     def diminuir_estoque(self, valor_diminuir, produto):
