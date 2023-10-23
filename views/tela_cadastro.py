@@ -4,6 +4,7 @@ from views.tela_principal import TelaPrincipal, sleep
 class TelaCadastros(TelaPrincipal):
 
     def mostra_opcoes(self,):
+        self.limparTela()
         self.cabecalho('Cadastros')
         self.subcabecalho('Tipos')
         print("1 - Produtos       2 - Funcionários       3 - Clientes       4 - Voltar")
