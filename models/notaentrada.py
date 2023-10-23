@@ -2,7 +2,7 @@ from models.nota import Nota
 
 
 class NotaEntrada(Nota):
-    def __init__(self, num, produtos, fornecedor):
+    def __init__(self, num: int, produtos: list, fornecedor: str):
         super().__init__ (num, produtos)
         self.__fornecedor = fornecedor
         self.__valor = 0
