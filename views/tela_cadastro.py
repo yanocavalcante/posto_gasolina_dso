@@ -1,35 +1,15 @@
-from views.tela_principal import TelaPrincipal
+from views.tela_principal import TelaPrincipal, sleep
 
-class TelaCadastros:
-    def __init__(self) -> None:
-        pass
+
+class TelaCadastros(TelaPrincipal):
 
     def mostra_opcoes(self,):
-        print("-"*20)
-        print("1 - Cadastro de Produtos")
-        print("2 - Cadastro de Pessoas")
-        print("3 - Voltar ao início")
-        opcao = input("Digite uma opção: ")
-        try:
-            opcao = int(opcao)
-        except ValueError:
-            print("-"*20)
-            print("Digite um número válido!")
-            print("-"*20)
-
-        while opcao not in [1, 2, 3]:
-            print("1 - Cadastro de Produtos")
-            print("2 - Cadastro de Pessoas")
-            print("3 - Voltar ao início")
-            opcao = input("Digite uma opção: ")
-            try:
-                opcao = int(opcao)
-            except ValueError:
-                print("-"*20)
-                print("Digite um número válido!")
-                print("-"*20)
-
-        return opcao
+        self.limparTela()
+        self.cabecalho('Cadastros')
+        self.subcabecalho('Tipos')
+        print("1 - Produtos       2 - Pessoas       3 - Voltar")
+        op = self.le_opcoes([1,2,3,])
+        return op
     
     def input_id_para_alterar(self):
         id_para_alterar = input("Digite o id para alterar: ")

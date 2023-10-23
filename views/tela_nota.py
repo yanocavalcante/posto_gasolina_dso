@@ -5,7 +5,7 @@ class TelaNotas(TelaPrincipal):
     def mostra_tipo_notas(self):
         self.limparTela()
         self.cabecalho('Notas')
-        print('1 - Saída        2 - Entrada        3 - Retornar')
+        print('1 - Saída        2 - Entrada        3 - Voltar')
         op = self.le_opcoes([1,2,3])
         return op
     
