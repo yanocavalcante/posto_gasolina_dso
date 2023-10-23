@@ -1,5 +1,5 @@
 class Caixa:
-    def __init__(self, tipo, nome, saldo, credito = None):
+    def __init__(self, tipo: str, nome: str, saldo: float, credito = None) -> None:
         self.__saldo = saldo
         self.__tipo = tipo
         self.__nome = nome

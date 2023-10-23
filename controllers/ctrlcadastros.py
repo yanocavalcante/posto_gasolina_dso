@@ -12,6 +12,15 @@ class CtrlCadastros:
         self.__tela_produto = TelaProduto()
         self.__tela_cadastros = TelaCadastros()
         self.__controlador_principal = controlador_principal
+        
+        #delete-me
+        self.instancia_teste()
+
+    def instancia_teste(self):
+        gasolina = Produto('Combustível', 'Gasolina', 'Atem', 5, 6, 2000, 1)
+        yano = Cliente('Yano', 15, '12312312312', '12312312312', 2)
+        self.__lista_pessoas.append(yano)
+        self.__lista_produtos.append(gasolina)
 
     @property
     def lista_pessoas(self):
@@ -378,12 +387,12 @@ class CtrlCadastros:
 
     def verifica_lista_clientes(self, cliente):
         for clientes in self.lista_pessoas:
-            if clientes.nome == cliente.nome:
+            if clientes.nome == cliente:
                 return clientes
 
     def verifica_lista_produtos(self, produto):
         for produtos in self.lista_produtos:
-            if produtos.nome == produto.nome:
+            if produtos.nome == produto:
                 return produtos
             
     def diminuir_estoque(self, valor_diminuir, produto):
