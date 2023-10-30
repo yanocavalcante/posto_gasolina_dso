@@ -95,7 +95,7 @@ class CtrlCadastros:
                 print("-"*20)
                 self.mostra_lista_produtos()
                 print("-"*20)
-                print('EXCLUIR PRODUTO')
+                print('EXCLUIR PRODUTO')            #PRINT NO CONTROLADOR
 
                 id_para_excluir = self.tela_produto.input_id_para_excluir_produto()
 
@@ -110,7 +110,7 @@ class CtrlCadastros:
             elif opcao_produto == 4:
                 self.mostra_lista_produtos()
 
-                input("Digite qualquer coisa para voltar: ")
+                input("Digite qualquer coisa para voltar: ")        #PRINT NO CONTROLADOR
 
                 self.input_opcao_cadastros()
             
@@ -173,7 +173,7 @@ class CtrlCadastros:
                 print("-"*20)
                 self.mostra_lista_pessoas()
                 print("-"*20)
-                print('EXCLUIR PESSOA')
+                print('EXCLUIR PESSOA')         #PRINT NO CONTROLADOR
 
                 id_para_excluir = self.__tela_cadastros.input_id_para_excluir()
 
@@ -188,7 +188,7 @@ class CtrlCadastros:
             elif opcao_pessoa == 4:
                 self.mostra_lista_pessoas()
                 
-                input("Digite qualquer coisa para voltar: ")
+                input("Digite qualquer coisa para voltar: ")            #PRINT NO CONTROLADOR
 
                 self.input_opcao_cadastros()
             
@@ -228,7 +228,7 @@ class CtrlCadastros:
             info_pessoa['cpf'] = int(info_pessoa['cpf'])
             return info_pessoa
         except ValueError:
-            info_pessoa['cpf'] = input("Digite um cpf válido: ")
+            info_pessoa['cpf'] = input("Digite um cpf válido: ")        #PRINT NO CONTROLADOR
             return self.verifica_cpf(info_pessoa)
         
     def verifica_telefone(self, info_pessoa):
@@ -243,7 +243,7 @@ class CtrlCadastros:
         
     def verifica_existencia_id_alterar(self, id):
         if self.lista_pessoas == []:
-            print("Não existe nenhuma pessoa na lista!")
+            print("Não existe nenhuma pessoa na lista!")        #PRINT NO CONTROLADOR
             return
         
         id = self.verifica_id_alterar(id)
@@ -258,7 +258,7 @@ class CtrlCadastros:
     
     def verifica_existencia_id_alterar_produto(self, id):
         if self.lista_produtos == []:
-            print("Não existe nenhum produto na lista!")
+            print("Não existe nenhum produto na lista!")        #PRINT NO CONTROLADOR
             return
         
         id = self.verifica_id_alterar(id)
@@ -273,7 +273,7 @@ class CtrlCadastros:
         
     
     def mostra_lista_pessoas(self):
-        print("-"*20)
+        print("-"*20)                       #PRINT NO CONTROLADOR
         for pessoa in self.lista_pessoas:
             self.tela_pessoa.mostra_pessoa(pessoa)
 
@@ -323,7 +323,7 @@ class CtrlCadastros:
 
     def verifica_existencia_id_excluir(self, id):
         if self.lista_pessoas == []:
-            print("Não existe nenhuma pessoa na lista!")
+            print("Não existe nenhuma pessoa na lista!")        #PRINT NO CONTROLADOR
             return
         
         id = self.verifica_id_excluir(id)
@@ -338,7 +338,7 @@ class CtrlCadastros:
     
     def verifica_existencia_id_excluir_produto(self, id):
         if self.lista_produtos == []:
-            print("Não existe nenhum produto na lista!")
+            print("Não existe nenhum produto na lista!")                #PRINT NO CONTROLADOR
             return
         
         id = self.verifica_id_excluir_produto(id)
@@ -365,7 +365,7 @@ class CtrlCadastros:
             info_produto['preco'] = float(info_produto['preco'])
             return info_produto
         except ValueError:
-            info_produto['preco'] = input('Digite um preço válido: ')
+            info_produto['preco'] = input('Digite um preço válido: ')           #PRINT NO CONTROLADOR
             return self.verifica_preco(info_produto)
         
     def verifica_valor_estoque(self, info_produto):
@@ -373,11 +373,11 @@ class CtrlCadastros:
             info_produto['estoque'] = int(info_produto['estoque'])
             return info_produto
         except ValueError:
-            info_produto['estoque'] = input('Digite um valor válido para o estoque: ')
+            info_produto['estoque'] = input('Digite um valor válido para o estoque: ')          #PRINT NO CONTROLADOR
             return self.verifica_valor_estoque(info_produto)
         
     def mostra_lista_produtos(self):
-        print("-"*20)
+        print("-"*20)           #PRINT NO CONTROLADOR
         for produto in self.lista_produtos:
             self.tela_produto.mostra_produto(produto)
 
@@ -397,7 +397,7 @@ class CtrlCadastros:
             
     def diminuir_estoque(self, valor_diminuir, produto):
         if valor_diminuir > produto.estoque:
-            print("Impossível realizar essa operação! Valor maior que o estoque do produto!")
+            print("Impossível realizar essa operação! Valor maior que o estoque do produto!")       #PRINT NO CONTROLADOR
             return 
         else:
             produto.estoque -= valor_diminuir
