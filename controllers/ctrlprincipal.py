@@ -40,9 +40,9 @@ class CtrlPrincipal:
         exit(1)
 
     def processa_input(self, values):
-        if values['1']:
+        if values['3']:
             self.mostra_tela_notas()
-        elif values['2']:
+        elif values['1']:
             self.mostra_tela_cadastros()
-        elif values['3']:
+        elif values['2']:
             self.mostra_tela_caixas()
