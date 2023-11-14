@@ -29,7 +29,7 @@ class CtrlNotas:
         nota.calcula_valor_saida
         self.__ctrlprincipal.ctrlcaixas.adiciona_movimento(nota)
         for produto in list_prod_nota:
-            self.__ctrlprincipal.ctrlcadastros.diminuir_estoque(produto['qnt'], produto['prod'].nome)
+            self.__ctrlprincipal.ctrlcadastros.diminuir_estoque(produto['qnt'], produto['prod'])
         self.retornar()
         
     def cadastra_notaEntrada(self):
