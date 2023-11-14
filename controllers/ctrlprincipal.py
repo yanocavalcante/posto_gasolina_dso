@@ -25,6 +25,7 @@ class CtrlPrincipal:
 
     def mostra_tela_principal(self):
         button, values = self.__telaprincipal.open()
+        self.__telaprincipal.close()
         self.processa_input(values)
 
     def mostra_tela_notas(self):
