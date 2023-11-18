@@ -18,7 +18,6 @@ class TelaNotas():
         return op
 
     #Primeiro Layout
-
     def init_tipo_nota(self):
         sg.theme('DarkAmber')
         layout = [
@@ -29,9 +28,8 @@ class TelaNotas():
                   [sg.B('Confirmar'), sg.B('Voltar')]
         ]
         self.__window = sg.Window('Menu - Notas').Layout(layout)
-    
-    #Segundo Layout
 
+    #Segundo Layout
     def input_produtos(self):
         sg.theme('DarkAmber')
         layout = [

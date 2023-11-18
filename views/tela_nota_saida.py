@@ -9,7 +9,7 @@ class TelaNotaSaida:
     def input_cliente(self):
         sg.theme('DarkAmber')
         layout= [
-                 [sg.Text('Cliente:')],
+                 [sg.Text('Cliente:'), (sg.In('', key='cliente'))],
                  [sg.B('Confirmar')]
         ]
         self.__window = sg.Window('Sistema').Layout(layout)
@@ -17,6 +17,6 @@ class TelaNotaSaida:
     def open(self):
         event, values = self.__window.Read()
         return values
-    
+
     def close(self):
         self.__window.Close()

@@ -1,14 +1,14 @@
 from views.tela_principal import TelaPrincipal, sleep
 
-class TelaNotas(TelaPrincipal):
 
+class TelaNotas(TelaPrincipal):
     def mostra_tipo_notas(self):
         self.limparTela()
         self.cabecalho('Notas')
         print('1 - Saída        2 - Entrada        3 - Voltar')
         op = self.le_opcoes([1,2,3])
         return op
-    
+
     def le_opcoes(self, ops):
         try:
             op = int(input())
@@ -43,11 +43,11 @@ class TelaNotas(TelaPrincipal):
         self.subcabecalho('Produtos')
         nome, qnt, op = self.listagem_produto()
         return nome, qnt, op
-    
+
     def input_cliente(self):
         cliente = str(input('Cliente:'))
         return cliente
-    
+
     def input_fornecedor(self):
         fornecedor = str(input('Fornecedor:'))
-        return fornecedor 
+        return fornecedor
