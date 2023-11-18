@@ -4,9 +4,22 @@ import PySimpleGUI as sg
 class TelaNotas():
     def __init__(self):
         self.__window = None
-        self.input_tipo_nota()
+        self.init_tipo_nota()
 
-    def input_tipo_nota(self):
+    def tela_tipo_nota(self):
+        self.init_tipo_nota()
+        event, values = self.open()
+        if values['1']:
+            op = 1
+        if values['2']:
+            op = 2
+        if event in (None, 'Voltar'):
+            op = 3
+        return op
+
+    #Primeiro Layout
+
+    def init_tipo_nota(self):
         sg.theme('DarkAmber')
         layout = [
                   [sg.Text('Notas', font = ('Helvica', 25))],
@@ -16,31 +29,21 @@ class TelaNotas():
                   [sg.B('Confirmar'), sg.B('Voltar')]
         ]
         self.__window = sg.Window('Menu - Notas').Layout(layout)
-
-    def open(self):
-        event, values = self.__window.Read()
-        return event, values
-        # if values['1']:
-        #     op = 1
-        # elif values['2']:
-        #     op = 2
-        # if event in [None, 'Voltar']:
-        #     op = 3
-        # self.close()
-        # return op
     
+    #Segundo Layout
+
     def input_produtos(self):
         sg.theme('DarkAmber')
         layout = [
-                  [sg.Text('------PRODUTOS------', font = ('Helvica',25))]
-                  [sg.Text('Nome:', size=(15, 1)), sg.InputText('', key='nome')],
+                  [sg.Text('Listagem de Produtos', font = ('Helvica',25))],
+                  [sg.Text('Nome:'), sg.InputText('', key='nome')],
                   [sg.Text('Quantidade:'), sg.Input('', key = ('qnt'))],
-                  [sg.Text('Adicionar + Produtos')],
-                  [sg.Radio('Sim', 'G3', key='1'), sg.Radio('Não', 'G3', key = '0')]
+                  [sg.Text('Deseja Adicionar Mais Produtos?')],
+                  [sg.Radio('Sim', 'G3', key='1'), sg.Radio('Não', 'G3', key = '0')],
+                  [sg.B('Confirmar')]
         ]
         self.__window = sg.Window('Sistema').Layout(layout)
         event, values = self.open()
-        print(values)
         nome = values['nome']
         qnt = values['qnt']
         if values['1']:
@@ -50,6 +53,9 @@ class TelaNotas():
         self.close()
         return {'nome': nome, 'qnt': qnt, 'op': op}
 
+    def open(self):
+        event, values = self.__window.Read()
+        return event, values
 
     def close(self):
         self.__window.Close()

@@ -20,14 +20,14 @@ class TelaPrincipal():
 
     def open(self):
         event, values = self.__window.Read()
-        if values['1']:
+        if event in [None]:
+            op = 4
+        elif values['1']:
             op = 1
         elif values['2']:
             op = 2
         elif values['3']:
             op = 3
-        if event in [None]:
-            op = 4
         self.close()
         return op
 

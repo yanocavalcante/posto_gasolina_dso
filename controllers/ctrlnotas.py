@@ -14,7 +14,7 @@ class CtrlNotas:
         # self.__telanota_entrada = TelaNotaEntrada()
 
     def pergunta_tipo_nota(self):
-        op = self.__telanota.open()
+        op = self.__telanota.tela_tipo_nota()
         self.__telanota.close()
         self.processa_input_tipo(op)
 
@@ -22,7 +22,7 @@ class CtrlNotas:
         op = True
         list_prod_nota = list()
         while op == True:
-            dic_info_prod = self.__telanota.input_produtos()       #TELA_NOTA_SAIDA
+            dic_info_prod = self.__telanota.input_produtos()
             obj_prod = self.__ctrlprincipal.ctrlcadastros.verifica_lista_produtos(dic_info_prod['nome'])
             produto = {'prod': obj_prod, 'qnt': dic_info_prod['qnt']}
             list_prod_nota.append(produto)
@@ -42,10 +42,11 @@ class CtrlNotas:
         op = True
         list_prod_nota = list()
         while op == True:
-            nome, qnt, op = self.__telanota.input_notaEntrada()     #TELA_NOTA_ENTRADA
-            obj_prod = self.__ctrlprincipal.ctrlcadastros.verifica_lista_produtos(nome)
-            produto = {'prod': obj_prod, 'qnt': qnt}
+            dic_info_prod = self.__telanota.input_produtos()
+            obj_prod = self.__ctrlprincipal.ctrlcadastros.verifica_lista_produtos(dic_info_prod['nome'])
+            produto = {'prod': obj_prod, 'qnt': dic_info_prod['qnt']}
             list_prod_nota.append(produto)
+            op = dic_info_prod['op']
         num = self.calcula_num_nota()
         fornecedor = self.__telanota.input_fornecedor()     #TELA_NOTA_ENTRADA
         nota = NotaEntrada(num, list_prod_nota, fornecedor)
@@ -64,9 +65,10 @@ class CtrlNotas:
         self.__ctrlprincipal.mostra_tela_principal()
 
     def processa_input_tipo(self, op):
+        print(op)
         if op == 1:
             self.cadastra_notaSaida()
         elif op == 2:
             self.cadastra_notaEntrada()
         elif op == 3:
-            self.retornar
+            self.retornar()
