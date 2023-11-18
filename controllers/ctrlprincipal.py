@@ -1,8 +1,8 @@
-# from views.tela_principal import TelaPrincipal
 from views.tela_principal_gui import TelaPrincipal
 from controllers.ctrlcadastros import CtrlCadastros
 from controllers.ctrlcaixas import CtrlCaixas
 from controllers.ctrlnotas import CtrlNotas
+
 
 class CtrlPrincipal:
     def __init__(self):
@@ -24,9 +24,9 @@ class CtrlPrincipal:
         return self.__ctrlcadastros
 
     def mostra_tela_principal(self):
-        button, values = self.__telaprincipal.open()
+        op = self.__telaprincipal.open()
         self.__telaprincipal.close()
-        self.processa_input(values)
+        self.processa_input(op)
 
     def mostra_tela_notas(self):
         self.ctrlnotas.pergunta_tipo_nota()
@@ -40,10 +40,12 @@ class CtrlPrincipal:
     def encerra_sistema(self):
         exit(1)
 
-    def processa_input(self, values):
-        if values['3']:
-            self.mostra_tela_notas()
-        elif values['1']:
+    def processa_input(self, op):
+        if op == 1:
             self.mostra_tela_cadastros()
-        elif values['2']:
+        elif op == 2:
             self.mostra_tela_caixas()
+        elif op == 3:
+            self.mostra_tela_notas()
+        elif op == 4:
+            self.encerra_sistema()
