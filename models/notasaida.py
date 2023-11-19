@@ -1,8 +1,7 @@
 from models.nota import Nota
-#from cliente import Cliente
 
 class NotaSaida(Nota):
-    def __init__(self, num: int, list_prod_nota: list, cliente: str):
+    def __init__(self, num: int, list_prod_nota: list, cliente):
         super().__init__(num, list_prod_nota)
         self.__cliente = cliente
         self.__valor = 0
@@ -10,6 +9,14 @@ class NotaSaida(Nota):
     @property
     def valor(self):
         return self.__valor
+    
+    @valor.setter
+    def valor(self, valor):
+        self.__valor = valor
+    
+    @property
+    def cliente(self):
+        return self.__cliente
     
     def calcula_valor_saida(self):
         self.valor = 0
