@@ -22,30 +22,26 @@ class CtrlPrincipal:
     @property
     def ctrlcadastros(self):
         return self.__ctrlcadastros
-
-    def mostra_tela_principal(self):
-        op = self.__telaprincipal.open()
-        self.__telaprincipal.close()
-        self.processa_input(op)
+    
+    def inicializa_sistema(self):
+        self.abre_tela()
 
     def mostra_tela_notas(self):
-        self.ctrlnotas.pergunta_tipo_nota()
+        self.ctrlnotas.abre_tela()
 
     def mostra_tela_cadastros(self):
         self.ctrlcadastros.input_opcao_cadastros()
 
     def mostra_tela_caixas(self):
-        self.ctrlcaixas.pergunta_acao()
+        self.ctrlcaixas.abre_tela()
 
     def encerra_sistema(self):
         exit(1)
 
-    def processa_input(self, op):
-        if op == 1:
-            self.mostra_tela_cadastros()
-        elif op == 2:
-            self.mostra_tela_caixas()
-        elif op == 3:
-            self.mostra_tela_notas()
-        elif op == 4:
-            self.encerra_sistema()
+    def abre_tela(self):
+        lista_opcoes = {1: self.mostra_tela_cadastros, 2: self.mostra_tela_caixas,
+                        3: self.mostra_tela_notas, 4: self.encerra_sistema}
+        while True:
+            op = self.__telaprincipal.open()
+            op_escolhida = lista_opcoes[op]
+            op_escolhida()

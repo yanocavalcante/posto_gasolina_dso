@@ -5,18 +5,9 @@ class TelaCaixa():
     def __init__(self):
         self.__window = None
 
-#POPUPS
-    def caixa_n_encontrado(self):
+    def mostra_mensagem(self, msg):
         sg.theme('DarkAmber')
-        sg.Popup('Caixa Não Encontrado!')
-
-    def cancela_operacao(self):
-        sg.theme('DarkAmber')
-        sg.Popup('Por Conta de Insuficiência no Saldo a Operação foi cancelada!')
-
-    def uso_credito(self, credito_restante):
-        sg.theme('DarkAmber')
-        sg.Popup(f'AVISO: Para essa operação parte do crédito foi utilizada, restante: {credito_restante}')
+        sg.Popup(f'{msg}')
 
     def tela_acao(self):
         self.seleciona_acao()
@@ -27,9 +18,9 @@ class TelaCaixa():
             op = 1
         elif values['2']:
             op = 2
+        self.close()
         return op
 
-#LAYOUTS
     def input_cadastro_caixa(self):
         sg.theme('DarkAmber')
         layout = [
@@ -60,7 +51,6 @@ class TelaCaixa():
         ]
         self.__window = sg.Window('Sistema').Layout(layout)
 
-#MÉTODOS BASE
     def open(self):
         event, values = self.__window.Read()
         return event, values

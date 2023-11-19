@@ -13,10 +13,9 @@ class CtrlNotas:
         self.__telanota_saida = TelaNotaSaida()
         self.__telanota_entrada = TelaNotaEntrada()
 
-    def pergunta_tipo_nota(self):
-        op = self.__telanota.tela_tipo_nota()
-        self.__telanota.close()
-        self.processa_input_tipo(op)
+    @property
+    def notas(self):
+        return self.__notas
 
     def cadastra_notaSaida(self):
         op = True
@@ -24,7 +23,7 @@ class CtrlNotas:
         while op == True:
             dic_info_prod = self.__telanota.input_produtos()
             obj_prod = self.__ctrlprincipal.ctrlcadastros.verifica_lista_produtos(dic_info_prod['nome'])
-            produto = {'prod': obj_prod, 'qnt': dic_info_prod['qnt']}
+            produto = {'prod': obj_prod, 'qnt': int(dic_info_prod['qnt'])}
             list_prod_nota.append(produto)
             op = dic_info_prod['op']
         num = self.calcula_num_nota()
@@ -32,7 +31,7 @@ class CtrlNotas:
         cliente = self.__ctrlprincipal.ctrlcadastros.verifica_lista_clientes(cliente)
         nota = NotaSaida(num, list_prod_nota, cliente)
         self.__notas.append(nota)
-        nota.calcula_valor_saida
+        nota.calcula_valor_saida()
         self.__ctrlprincipal.ctrlcaixas.adiciona_movimento(nota)
         for produto in list_prod_nota:
             self.__ctrlprincipal.ctrlcadastros.diminuir_estoque(produto['qnt'], produto['prod'])
@@ -44,7 +43,7 @@ class CtrlNotas:
         while op == True:
             dic_info_prod = self.__telanota.input_produtos()
             obj_prod = self.__ctrlprincipal.ctrlcadastros.verifica_lista_produtos(dic_info_prod['nome'])
-            produto = {'prod': obj_prod, 'qnt': dic_info_prod['qnt']}
+            produto = {'prod': obj_prod, 'qnt': int(dic_info_prod['qnt'])}
             list_prod_nota.append(produto)
             op = dic_info_prod['op']
         num = self.calcula_num_nota()
@@ -62,13 +61,11 @@ class CtrlNotas:
         return num
 
     def retornar(self):
-        self.__ctrlprincipal.mostra_tela_principal()
+        self.__ctrlprincipal.abre_tela()
 
-    def processa_input_tipo(self, op):
-        print(op)
-        if op == 1:
-            self.cadastra_notaSaida()
-        elif op == 2:
-            self.cadastra_notaEntrada()
-        elif op == 3:
-            self.retornar()
+    def abre_tela(self):
+        lista_opcoes = {1: self.cadastra_notaSaida, 2: self.cadastra_notaEntrada,
+                        3: self.retornar}
+        continua = True
+        while continua:
+            lista_opcoes[self.__telanota.tela_tipo_nota()]()
