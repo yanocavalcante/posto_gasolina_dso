@@ -8,6 +8,7 @@ class CtrlCaixas:
         self.__ctrlprincipal = ctrlprincipal
         self.__telacaixa = TelaCaixa()
         self.__listacaixas = []
+        self.__continua_na_tela = True
         #delete-me
         self.instancia_teste()
 
@@ -57,11 +58,11 @@ class CtrlCaixas:
         caixa.calcula_novo_saldo(nota)
 
     def retornar(self):
-        self.__ctrlprincipal.abre_tela()
+        self.__continua_na_tela = False
 
     def abre_tela(self):
+        self.__continua_na_tela = True
         lista_opcoes = {1: self.cria_caixa, 2: self.consulta_caixa,
                         3: self.retornar}
-        continua = True
-        while continua:
+        while self.__continua_na_tela:
             lista_opcoes[self.__telacaixa.tela_acao()]()

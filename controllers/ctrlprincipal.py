@@ -44,4 +44,5 @@ class CtrlPrincipal:
         while True:
             op = self.__telaprincipal.open()
             op_escolhida = lista_opcoes[op]
+            self.__telaprincipal.close()
             op_escolhida()

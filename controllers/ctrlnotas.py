@@ -8,6 +8,7 @@ from models.notasaida import NotaSaida
 class CtrlNotas:
     def __init__(self, ctrlprincipal):
         self.__ctrlprincipal = ctrlprincipal
+        self.__continua_na_tela = True
         self.__notas = []
         self.__telanota = TelaNotas()
         self.__telanota_saida = TelaNotaSaida()
@@ -67,11 +68,12 @@ class CtrlNotas:
         return num
 
     def retornar(self):
-        self.__ctrlprincipal.abre_tela()
+        self.__continua_na_tela = False
 
     def abre_tela(self):
+        self.__continua_na_tela = True
         lista_opcoes = {1: self.cadastra_notaSaida, 2: self.cadastra_notaEntrada,
                         3: self.retornar}
-        continua = True
-        while continua:
+        
+        while self.__continua_na_tela:
             lista_opcoes[self.__telanota.tela_tipo_nota()]()

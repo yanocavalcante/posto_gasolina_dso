@@ -21,6 +21,7 @@ class TelaPrincipal():
         self.__window = sg.Window('Menu Inicial').Layout(layout)
 
     def open(self):
+        self.init_components()
         event, values = self.__window.Read()
         if event in [None]:
             op = 4
