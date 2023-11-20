@@ -26,20 +26,28 @@ class TelaCaixa():
         layout = [
                   [sg.Text('Caixas', font = ('Helvica', 25))],
                   [sg.Text('Nome:'), sg.In('', key = 'nome')],
-                  [sg.Text('Saldo Inicial:'), sg.In('', key = 'saldo')],
-                  [sg.Text('Crédito:'), sg.In('', key = 'credito')],
-                  [sg.Radio('Físico', 'G4', key = 'fisico'), sg.Radio('Bancário', 'G4', key = 'bancario')]
+                  [sg.Text('Saldo Inicial:'), sg.In('', key = 'saldo', enable_events=True)],
+                  [sg.Text('Crédito:'), sg.In('0', key = 'credito', enable_events=True)],
+                  [sg.Radio('Físico', 'G4', key = 'fisico'), sg.Radio('Bancário', 'G4', key = 'bancario')],
+                  [sg.B('Confirmar'), sg.Exit('Voltar')]
         ]
         self.__window = sg.Window('Menu Caixas').Layout(layout)
-        event, values = self.open()
+        while True:
+            event, values = self.open()
+            if event == 'Confirmar':
+                try:
+                    saldo = int(values['saldo'])
+                    credito = int(values['credito'])
+                    break
+                except ValueError:
+                    self.mostra_mensagem('Valor Inválido para "Saldo" e/ou "Crédito"!')
         nome = values['nome']
-        saldo = values['saldo']
         if values['fisico']:
             tipo = 'Físico'
-            credito = None
+            credito = 0
         else:
             tipo = 'Bancário'
-            credito = values['credito']
+        self.close()
         return tipo, nome, saldo, credito
 
     def input_caixa(self):

@@ -43,7 +43,7 @@ class TelaNotas():
                   [sg.Radio('Sim', 'G3', key='1'), sg.Radio('Não', 'G3', key = '0')],
                   [sg.B('Confirmar')]
         ]
-        self.__window = sg.Window('Sistema').Layout(layout)
+        self.__window = sg.Window('Menu Notas').Layout(layout)
         while True:
             event, values = self.open()
             if event == 'Confirmar':

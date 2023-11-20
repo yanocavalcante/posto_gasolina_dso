@@ -16,6 +16,7 @@ class TelaNotaSaida:
 
     def open(self):
         event, values = self.__window.Read()
+        self.close()
         return values
 
     def close(self):
