@@ -27,15 +27,18 @@ class CtrlNotas:
             list_prod_nota.append(produto)
             op = dic_info_prod['op']
         num = self.calcula_num_nota()
-        cliente = self.__telanota_saida.input_cliente()
-        cliente = self.__ctrlprincipal.ctrlcadastros.verifica_lista_clientes(cliente)
+        self.__telanota_saida.input_cliente()
+        values = self.__telanota_saida.open()
+        cliente_string = values['cliente']
+        cliente = self.__ctrlprincipal.ctrlcadastros.verifica_lista_clientes(cliente_string)
         nota = NotaSaida(num, list_prod_nota, cliente)
         self.__notas.append(nota)
         nota.calcula_valor_saida()
         self.__ctrlprincipal.ctrlcaixas.adiciona_movimento(nota)
         for produto in list_prod_nota:
             self.__ctrlprincipal.ctrlcadastros.diminuir_estoque(produto['qnt'], produto['prod'])
-        self.retornar()
+        self.__telanota.mostra_mensagem('Nota Cadastrada com Sucesso!')            
+        self.abre_tela()
 
     def cadastra_notaEntrada(self):
         op = True
@@ -47,14 +50,17 @@ class CtrlNotas:
             list_prod_nota.append(produto)
             op = dic_info_prod['op']
         num = self.calcula_num_nota()
-        fornecedor = self.__telanota_entrada.input_fornecedor()
-        nota = NotaEntrada(num, list_prod_nota, fornecedor)
+        self.__telanota_entrada.input_fornecedor()
+        values = self.__telanota_entrada.open()
+        fornecedor_string = values['fornecedor']
+        nota = NotaEntrada(num, list_prod_nota, fornecedor_string)
         nota.calcula_valor_entrada()
         self.__notas.append(nota)
         self.__ctrlprincipal.ctrlcaixas.adiciona_movimento(nota)
         for produto in list_prod_nota:
             self.__ctrlprincipal.ctrlcadastros.aumentar_estoque(produto['qnt'], produto['prod'])
-        self.retornar()
+        self.__telanota.mostra_mensagem('Nota Cadastrada com Sucesso!')
+        self.abre_tela()
 
     def calcula_num_nota(self):
         num = len(self.__notas) + 1
