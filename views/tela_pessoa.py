@@ -33,6 +33,10 @@ class TelaPessoa:
         cpf = input("Digite o cpf da pessoa: ")
         telefone = input("Digite o telefone da pessoa: ")
         funcionario = input("Ele é um funcionário do posto? (S/N): ").upper()
+        if funcionario == 'N':
+            email, valor_desconto = self.input_cliente()
+            return {'nome': nome, 'idade': idade, 'cpf': cpf, 'telefone': telefone,
+                     'funcionario': funcionario, 'email': email, 'valor_desconto': valor_desconto}
         
         return {"nome": nome, "idade": idade, "cpf": cpf, "telefone": telefone, "funcionario": funcionario}
 
@@ -40,6 +44,12 @@ class TelaPessoa:
         idade = input("Digite a idade da pessoa: ")
         
         return idade
+    
+    def input_cliente(self):
+        email = input('E-mail:')
+        valor_desconto = int(input('Porcentagem de Desconto:'))
+
+        return email, valor_desconto
     
     def input_funcionario(self):
         funcionario = input("Ele é um funcionário do posto? (S/N): ").upper()

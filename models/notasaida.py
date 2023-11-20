@@ -18,6 +18,10 @@ class NotaSaida(Nota):
     def cliente(self):
         return self.__cliente
     
+    @cliente.setter
+    def cliente(self, cliente):
+        self.__cliente = cliente
+    
     def calcula_valor_saida(self):
         self.valor = 0
         for produto in self.list_prod_nota:

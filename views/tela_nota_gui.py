@@ -6,6 +6,10 @@ class TelaNotas():
         self.__window = None
         self.init_tipo_nota()
 
+    def mostra_mensagem(self, msg):
+        sg.theme('DarkAmber')
+        sg.Popup(f'{msg}')
+
     def tela_tipo_nota(self):
         self.init_tipo_nota()
         event, values = self.open()

@@ -18,7 +18,7 @@ class CtrlCadastros:
 
     def instancia_teste(self):
         gasolina = Produto('Combustível', 'Gasolina', 'Atem', 5, 6, 2000, 1)
-        yano = Cliente('Yano', 15, '12312312312', '12312312312', 2)
+        yano = Cliente('Yano', 15, '12312312312', '12312312312', 2, 'yano', 25)
         self.__lista_pessoas.append(yano)
         self.__lista_produtos.append(gasolina)
 
@@ -138,7 +138,9 @@ class CtrlCadastros:
                                                         nome=info_pessoa['nome'], 
                                                         idade=info_pessoa['idade'], 
                                                         cpf=info_pessoa['cpf'],
-                                                        telefone=info_pessoa['telefone']))
+                                                        telefone=info_pessoa['telefone'],
+                                                        email=info_pessoa['email'],
+                                                        valor_desconto=info_pessoa['valor_desconto']))
                     self.input_opcao_cadastros()
 
             elif opcao_pessoa == 2:

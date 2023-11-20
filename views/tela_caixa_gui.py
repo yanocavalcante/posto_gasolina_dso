@@ -10,7 +10,7 @@ class TelaCaixa():
         sg.Popup(f'{msg}')
 
     def tela_acao(self):
-        self.seleciona_acao()
+        self.init_acao()
         event, values = self.open()
         if event in [None, 'Voltar']:
             op = 3        
@@ -31,6 +31,16 @@ class TelaCaixa():
                   [sg.Radio('Físico', 'G4', key = 'fisico'), sg.Radio('Bancário', 'G4', key = 'bancario')]
         ]
         self.__window = sg.Window('Sistema').Layout(layout)
+        event, values = self.open()
+        nome = values['nome']
+        saldo = values['saldo']
+        if values['fisico']:
+            tipo = 'Físico'
+            credito = None
+        else:
+            tipo = 'Bancário'
+            credito = values['credito']
+        return tipo, nome, saldo, credito
 
     def input_caixa(self):
         sg.theme('DarkAmber')
@@ -40,8 +50,12 @@ class TelaCaixa():
                   [sg.B('Confirmar')]
         ]
         self.__window = sg.Window('Sistema').Layout(layout)
+        event, values = self.open()
+        nome = values['nome']
+        self.close()
+        return nome
 
-    def seleciona_acao(self):
+    def init_acao(self):
         sg.theme('DarkAmber')
         layout = [
                   [sg.Text('Opções:')],

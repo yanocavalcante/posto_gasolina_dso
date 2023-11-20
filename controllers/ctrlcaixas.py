@@ -20,10 +20,9 @@ class CtrlCaixas:
         return self.__listacaixas
 
     def pergunta_caixa(self):
-        self.__telacaixa.input_caixa()
-        event, values = self.__telacaixa.open()
+        caixa = self.__telacaixa.input_caixa()
         for caixas in self.listacaixas:
-            if values['nome'] == caixas.nome:
+            if caixa == caixas.nome:
                 return caixas
         self.__telacaixa.mostra_mensagem('AVISO: Caixa Não Encontrado!')
         self.pergunta_caixa()
@@ -34,17 +33,10 @@ class CtrlCaixas:
         self.retornar()
 
     def cria_caixa(self):
-        event, values = self.__telacaixa.input_cadastro_caixa()
-        if values['fisico']:
-            tipo = 'Físico'
-        elif values['bancario']:
-            tipo = 'Bancário'
-        nome = values['nome']
-        saldo = values['saldo']
-        credito = values['credito']
+        tipo, nome, saldo, credito = self.__telacaixa.input_cadastro_caixa()
         caixa = Caixa(tipo, nome, saldo, credito)
         self.__listacaixas.append(caixa)
-        self.retornar()
+        self.abre_tela()
     
     def adiciona_movimento(self, nota):
         caixa = self.pergunta_caixa()
