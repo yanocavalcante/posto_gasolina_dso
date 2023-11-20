@@ -25,6 +25,7 @@ class TelaCaixa():
         sg.theme('DarkAmber')
         layout = [
                   [sg.Text('Caixas', font = ('Helvica', 25))],
+                  [sg.Text('Cadastro de Novo Caixa', font= ('Helvica', 18))],
                   [sg.Text('Nome:'), sg.In('', key = 'nome')],
                   [sg.Text('Saldo Inicial:'), sg.In('', key = 'saldo', enable_events=True)],
                   [sg.Text('Crédito:'), sg.In('0', key = 'credito', enable_events=True)],
@@ -57,6 +58,7 @@ class TelaCaixa():
         sg.theme('DarkAmber')
         layout = [
                   [sg.Text('Caixas', font = ('Helvica', 25))],
+                  [sg.Text('Selecione um Caixa para esta operação.', font= ('Helvica', 18))],
                   [sg.Text('Nome:'), sg.In('', key = 'nome')],
                   [sg.B('Confirmar')]
         ]
