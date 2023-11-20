@@ -30,7 +30,7 @@ class TelaCaixa():
                   [sg.Text('Crédito:'), sg.In('', key = 'credito')],
                   [sg.Radio('Físico', 'G4', key = 'fisico'), sg.Radio('Bancário', 'G4', key = 'bancario')]
         ]
-        self.__window = sg.Window('Sistema').Layout(layout)
+        self.__window = sg.Window('Menu Caixas').Layout(layout)
         event, values = self.open()
         nome = values['nome']
         saldo = values['saldo']
@@ -49,7 +49,7 @@ class TelaCaixa():
                   [sg.Text('Nome:'), sg.In('', key = 'nome')],
                   [sg.B('Confirmar')]
         ]
-        self.__window = sg.Window('Sistema').Layout(layout)
+        self.__window = sg.Window('Menu Caixas').Layout(layout)
         event, values = self.open()
         nome = values['nome']
         self.close()
@@ -63,7 +63,7 @@ class TelaCaixa():
                   [sg.Radio('Consultar', 'G5', key = '2')],
                   [sg.B('Confirmar'), sg.B('Voltar')]
         ]
-        self.__window = sg.Window('Sistema').Layout(layout)
+        self.__window = sg.Window('Menu Caixas').Layout(layout)
 
     def open(self):
         event, values = self.__window.Read()

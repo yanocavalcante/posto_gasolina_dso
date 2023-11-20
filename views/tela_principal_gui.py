@@ -9,8 +9,10 @@ class TelaPrincipal():
     def init_components(self):
         sg.theme('DarkAmber')
         layout = [
-            [sg.Text('Postos Ypê', font = ('Helvica', 25))],
-            [sg.Text('Menu Inicial:', font = ('Helvica', 15))],
+            [sg.Text('Software Ypê', font = ('Helvica', 25))],
+            [sg.Text('Seja Bem-Vindo!',
+                     font= ('Helvica', 10))],
+            [sg.Text('Menu Inicial:', font = ('Helvica', 20))],
             [sg.Radio('Cadastros', 'G1', key = '1')],
             [sg.Radio('Caixas', 'G1', key = '2')],
             [sg.Radio('Notas', 'G1', key = '3')],

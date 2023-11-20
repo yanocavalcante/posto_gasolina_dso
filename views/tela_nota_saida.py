@@ -12,7 +12,7 @@ class TelaNotaSaida:
                  [sg.Text('Cliente:'), (sg.In('', key='cliente'))],
                  [sg.B('Confirmar')]
         ]
-        self.__window = sg.Window('Sistema').Layout(layout)
+        self.__window = sg.Window('Menu Nota de Saída').Layout(layout)
 
     def open(self):
         event, values = self.__window.Read()
