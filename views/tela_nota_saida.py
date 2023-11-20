@@ -10,7 +10,7 @@ class TelaNotaSaida:
         sg.theme('DarkAmber')
         layout = [
                  [sg.Text('Notas', font = ('Helvica', 25))],
-                 [sg.Text('Informe o Cliente da Nota:', font = ('Helvica', 15))]
+                 [sg.Text('Informe o Cliente da Nota:', font = ('Helvica', 15))],
                  [sg.Text('Cliente:'), (sg.In('', key='cliente'))],
                  [sg.B('Confirmar')]
         ]

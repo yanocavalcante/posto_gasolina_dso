@@ -41,6 +41,9 @@ class TelaCaixa():
                     break
                 except ValueError:
                     self.mostra_mensagem('Valor Inválido para "Saldo" e/ou "Crédito"!')
+            elif event == 'Voltar':
+                self.close()
+                self.tela_acao()
         nome = values['nome']
         if values['fisico']:
             tipo = 'Físico'
@@ -66,7 +69,8 @@ class TelaCaixa():
     def init_acao(self):
         sg.theme('DarkAmber')
         layout = [
-                  [sg.Text('Opções:')],
+                  [sg.Text('Caixas', font = ('Helvica', 25))],
+                  [sg.Text('Opções:', font = ('Helvica', 18))],
                   [sg.Radio('Cadastrar', 'G5', key = '1')],
                   [sg.Radio('Consultar', 'G5', key = '2')],
                   [sg.B('Confirmar'), sg.B('Voltar')]

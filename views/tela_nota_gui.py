@@ -52,6 +52,9 @@ class TelaNotas():
                     break
                 except ValueError:
                     self.mostra_mensagem('Valor Inválido para "Quantidade"!')
+            elif event == 'Voltar':
+                self.close()
+                self.tela_tipo_nota()
         nome = values['nome']
         if values['1']:
             op = True
