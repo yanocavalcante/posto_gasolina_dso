@@ -1,24 +1,24 @@
 # from views.tela_caixa import TelaCaixa
 from views.tela_caixa_gui import TelaCaixa
 from models.caixa import Caixa
-
+from models.caixa_dao import CaixaDAO
 
 class CtrlCaixas:
     def __init__(self, ctrlprincipal):
         self.__ctrlprincipal = ctrlprincipal
         self.__telacaixa = TelaCaixa()
-        self.__listacaixas = []
+        self.__dao = CaixaDAO()
         self.__continua_na_tela = True
         #delete-me
         self.instancia_teste()
 
     def instancia_teste(self):
         posto = Caixa('Físico', 'Posto', 2000)
-        self.__listacaixas.append(posto)
+        self.__dao.add(posto)
 
     @property
     def listacaixas(self):
-        return self.__listacaixas
+        return self.__dao.get_all()
 
     def pergunta_caixa(self):
         caixa = self.__telacaixa.input_caixa()
@@ -36,7 +36,7 @@ class CtrlCaixas:
     def cria_caixa(self):
         tipo, nome, saldo, credito = self.__telacaixa.input_cadastro_caixa()
         caixa = Caixa(tipo, nome, saldo, credito)
-        self.__listacaixas.append(caixa)
+        self.__dao.add(caixa)
         self.abre_tela()
     
     def adiciona_movimento(self, nota):
