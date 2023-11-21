@@ -4,6 +4,9 @@ from models.cliente import Cliente
 from models.funcionario import Funcionario
 from views.tela_produto import TelaProduto
 from models.produto import Produto
+from models.caixa_dao import CaixaDAO
+
+
 class CtrlCadastros:
     def __init__(self, controlador_principal) -> None:
         self.__lista_pessoas = []
@@ -12,7 +15,8 @@ class CtrlCadastros:
         self.__tela_produto = TelaProduto()
         self.__tela_cadastros = TelaCadastros()
         self.__controlador_principal = controlador_principal
-        
+        self.__caixa_dao = CaixaDAO()
+
         #delete-me
         self.instancia_teste()
 
@@ -28,7 +32,7 @@ class CtrlCadastros:
     
     @property
     def lista_produtos(self):
-        return self.__lista_produtos
+        return self.__caixa_dao.get_all()
 
     @property
     def tela_pessoa(self):
@@ -53,7 +57,7 @@ class CtrlCadastros:
                 info_produto = self.verifica_preco(info_produto)
                 info_produto = self.verifica_valor_estoque(info_produto)
 
-                self.lista_produtos.append(Produto(id=0 if self.lista_produtos == [] else self.lista_produtos[-1].id + 1,
+                self.lista_produtos.add(Produto(id=0 if self.lista_produtos == [] else self.lista_produtos[-1].id + 1,
                                                    categoria=info_produto['categoria'],
                                                    nome=info_produto['nome'],
                                                    fornecedor=info_produto['fornecedor'],
