@@ -9,27 +9,26 @@ class TelaPrincipal():
     def init_components(self):
         sg.theme('DarkAmber')
         layout = [
-            [sg.Text('Software Ypê', font = ('Helvica', 25))],
-            [sg.Text('Seja Bem-Vindo!',
-                     font= ('Helvica', 10))],
-            [sg.Text('Menu Inicial:', font = ('Helvica', 20))],
-            [sg.Radio('Cadastros', 'G1', key = '1')],
-            [sg.Radio('Caixas', 'G1', key = '2')],
-            [sg.Radio('Notas', 'G1', key = '3')],
-            [sg.B('Confirmar'), sg.Exit('Sair')]
+            [sg.Text('S10 Software Inc.', font=('Helvetica', 25))],
+            [sg.Text('---Menu Inicial---', font=('Helvetica', 20))],
+            [sg.Button('Cadastros', size=(12, 2)), 
+            sg.Button('Caixas', size=(12, 2)), 
+            sg.Button('Notas', size=(12, 2))],
+            [sg.Button('Confirmar', size=(10, 1)), 
+            sg.Exit('Sair', size=(10, 1))]
         ]
         self.__window = sg.Window('Menu Inicial').Layout(layout)
 
     def open(self):
         self.init_components()
         event, values = self.__window.Read()
-        if event in [None]:
+        if event in [None, 'Sair']:
             op = 4
-        elif values['1']:
+        elif event == 'Cadastros':
             op = 1
-        elif values['2']:
+        elif event == 'Caixas':
             op = 2
-        elif values['3']:
+        elif event == 'Notas':
             op = 3
         self.close()
         return op
