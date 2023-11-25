@@ -54,7 +54,7 @@ class CtrlCaixas:
                 elif (caixa.saldo + caixa.credito) + (nota.valor) < 0:
                     self.__telacaixa.mostra_mensagem('AVISO: Operação Cancelada!')
                     return
-        caixa.listamovimentos.append(nota)
+        caixa.listamovimentos.append(nota)      #Mudar a forma/transformar em método da classe 'Caixa'
         caixa.calcula_novo_saldo(nota)
 
     def retornar(self):

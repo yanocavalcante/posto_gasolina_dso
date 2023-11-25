@@ -8,14 +8,14 @@ class TelaNotas():
 
     def mostra_mensagem(self, msg):
         sg.theme('DarkAmber')
-        sg.Popup(f'{msg}')
+        sg.Popup(f'{msg}', font=('Verdana',12))
 
     def tela_tipo_nota(self):
         self.init_tipo_nota()
         event, values = self.open()
-        if values['1']:
+        if event == 'Saída':
             op = 1
-        if values['2']:
+        if event == 'Entrada':
             op = 2
         if event in (None, 'Voltar'):
             op = 3
@@ -25,23 +25,26 @@ class TelaNotas():
     def init_tipo_nota(self):
         sg.theme('DarkAmber')
         layout = [
-                  [sg.Text('Notas', font = ('Helvica', 25))],
-                  [sg.Text('Selecione o tipo de Nota:', font = ('Helvica', 15))],
-                  [sg.Radio('Saída', 'G2', key = '1')],
-                  [sg.Radio('Entrada', 'G2', key = '2')],
-                  [sg.B('Confirmar'), sg.B('Voltar')]
+                  [sg.Text('----Notas----', font = ('Helvica', 25))],
+                  [sg.Text('', size=(15, 1))],
+                  [sg.Button('Saída', font = ('Verdana', 12), size=(18))],
+                  [sg.Button('Entrada', font=('Verdana', 12), size=(18))],
+                  [sg.T('')],
+                  [sg.B('Voltar', font=('Verdana', 8))]
         ]
         self.__window = sg.Window('Menu Notas').Layout(layout)
 
     def input_produtos(self):
         sg.theme('DarkAmber')
         layout = [
-                  [sg.Text('Listagem de Produtos', font = ('Helvica',25))],
-                  [sg.Text('Nome:'), sg.InputText('', key='nome')],
-                  [sg.Text('Quantidade:'), sg.Input('', key = 'qnt', enable_events=True)],
-                  [sg.Text('Deseja Adicionar Mais Produtos?')],
-                  [sg.Radio('Sim', 'G3', key='1'), sg.Radio('Não', 'G3', key = '0')],
-                  [sg.B('Confirmar')]
+                  [sg.Text('Listagem de Produtos', font = ('Verdana',25))],
+                  [sg.Text('Nome:', font=('Verdana', 12)), sg.InputText('', key='nome', size=(30))],
+                  [sg.Text('Quantidade:', font=('Verdana', 12)), sg.Input('', key = 'qnt', enable_events=True, size=(30))],
+                  [sg.Text('Deseja Adicionar Mais Produtos?', font=('Verdana', 12))],
+                  [sg.Radio('Sim', 'G3', key='1', font=('Verdana', 12)),
+                   sg.Radio('Não', 'G3', key = '0', font=('Verdana',12))],
+                  [sg.T('')],
+                  [sg.B('Confirmar', font=('Verdana', 8))]
         ]
         self.__window = sg.Window('Menu Notas').Layout(layout)
         while True:

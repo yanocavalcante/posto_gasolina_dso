@@ -7,16 +7,16 @@ class TelaCaixa():
 
     def mostra_mensagem(self, msg):
         sg.theme('DarkAmber')
-        sg.Popup(f'{msg}')
+        sg.Popup(f'{msg}', font=('Verdana', 12))
 
     def tela_acao(self):
         self.init_acao()
         event, values = self.open()
         if event in [None, 'Voltar']:
             op = 3        
-        elif values['1']:
+        elif event == 'Cadastrar':
             op = 1
-        elif values['2']:
+        elif event == 'Consultar':
             op = 2
         self.close()
         return op
@@ -24,13 +24,15 @@ class TelaCaixa():
     def input_cadastro_caixa(self):
         sg.theme('DarkAmber')
         layout = [
-                  [sg.Text('Caixas', font = ('Helvica', 25))],
-                  [sg.Text('Cadastro de Novo Caixa', font= ('Helvica', 18))],
-                  [sg.Text('Nome:'), sg.In('', key = 'nome')],
-                  [sg.Text('Saldo Inicial:'), sg.In('', key = 'saldo', enable_events=True)],
-                  [sg.Text('Crédito:'), sg.In('0', key = 'credito', enable_events=True)],
-                  [sg.Radio('Físico', 'G4', key = 'fisico'), sg.Radio('Bancário', 'G4', key = 'bancario')],
-                  [sg.B('Confirmar'), sg.Exit('Voltar')]
+                  [sg.Text('---Caixas---', font = ('Verdana', 25))],
+                  [sg.Text('Novo Caixa', font= ('Verdana', 18))],
+                  [sg.Text('Nome:', font=('Verdana', 12)), sg.In('', key = 'nome')],
+                  [sg.Text('Saldo Inicial:', font=('Verdana', 12)), sg.In('', key = 'saldo', enable_events=True)],
+                  [sg.Text('Crédito:', font=('Verdana', 12)), sg.In('0', key = 'credito', enable_events=True)],
+                  [sg.Radio('Físico', 'G4', key = 'fisico', font=('Verdana', 12)),
+                    sg.Radio('Bancário', 'G4', key = 'bancario', font=('Verdana', 12))],
+                  [sg.T('')],
+                  [sg.B('Confirmar', font=('Verdana', 8)), sg.Exit('Voltar', font=('Verdana', 8))]
         ]
         self.__window = sg.Window('Menu Caixas').Layout(layout)
         while True:
@@ -54,13 +56,14 @@ class TelaCaixa():
         self.close()
         return tipo, nome, saldo, credito
 
-    def input_caixa(self):
+    def input_caixa(self, lista_caixas):
         sg.theme('DarkAmber')
         layout = [
-                  [sg.Text('Caixas', font = ('Helvica', 25))],
-                  [sg.Text('Selecione um Caixa para esta operação.', font= ('Helvica', 18))],
-                  [sg.Text('Nome:'), sg.In('', key = 'nome')],
-                  [sg.B('Confirmar')]
+                  [sg.Text('Caixas', font = ('Verdana', 25))],
+                  [sg.Text('Selecione um Caixa para esta operação.', font= ('Verdana', 18))],
+                  [sg.Text('Nome:', font=('Verdana', 12)), sg.InputCombo(lista_caixas, key = 'nome')],
+                  [sg.T('')],
+                  [sg.B('Confirmar', font=('Verdana', 8))]
         ]
         self.__window = sg.Window('Menu Caixas').Layout(layout)
         event, values = self.open()
@@ -71,11 +74,12 @@ class TelaCaixa():
     def init_acao(self):
         sg.theme('DarkAmber')
         layout = [
-                  [sg.Text('Caixas', font = ('Helvica', 25))],
-                  [sg.Text('Opções:', font = ('Helvica', 18))],
-                  [sg.Radio('Cadastrar', 'G5', key = '1')],
-                  [sg.Radio('Consultar', 'G5', key = '2')],
-                  [sg.B('Confirmar'), sg.B('Voltar')]
+                  [sg.Text('---Caixas---', font = ('Verdana', 25))],
+                  [sg.Text('')],
+                  [sg.B('Cadastrar', font = ('Verdana', 12), size=(18))],
+                  [sg.B('Consultar', font = ('Verdana', 12), size=(18))],
+                  [sg.T('')],
+                  [sg.B('Voltar', font=('Verdana', 8))]
         ]
         self.__window = sg.Window('Menu Caixas').Layout(layout)
 
