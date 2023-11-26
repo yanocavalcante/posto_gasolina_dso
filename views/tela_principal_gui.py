@@ -14,7 +14,7 @@ class TelaPrincipal():
             sg.Button('Caixas', size=(12, 3), font=('Verdana', 14)), 
             sg.Button('Notas', size=(12, 3), font = ('Verdana', 14))],
             [sg.T('')],
-            [sg.Exit('Sair', size=(8, 2), font=('Verdana', 10))]
+            [sg.Exit('Sair', size=(8, 2), font=('Verdana', 12))]
         ]
         self.__window = sg.Window('Menu Inicial').Layout(layout)
 
