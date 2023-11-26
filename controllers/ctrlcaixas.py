@@ -32,7 +32,7 @@ class CtrlCaixas:
             if caixa == caixas.nome:
                 return caixas
         self.__telacaixa.mostra_mensagem('AVISO: Caixa Não Encontrado!')
-        self.pergunta_caixa()
+        return
 
     def consulta_caixa(self):
         caixa = self.pergunta_caixa()
@@ -43,10 +43,13 @@ class CtrlCaixas:
         tipo, nome, saldo, credito = self.__telacaixa.input_cadastro_caixa()
         caixa = Caixa(tipo, nome, saldo, credito)
         self.__dao.add(caixa)
+        self.__telacaixa.mostra_mensagem('Caixa Cadastrado com Sucesso!')
         self.abre_tela()
     
     def adiciona_movimento(self, nota):
         caixa = self.pergunta_caixa()
+        while caixa is None:
+            caixa = self.pergunta_caixa()
         if nota.valor < 0:
             if caixa.tipo == 'Físico':
                 if (caixa.saldo + nota.valor) < 0:
@@ -60,7 +63,7 @@ class CtrlCaixas:
                 elif (caixa.saldo + caixa.credito) + (nota.valor) < 0:
                     self.__telacaixa.mostra_mensagem('AVISO: Operação Cancelada!')
                     return
-        caixa.listamovimentos.append(nota)      #Mudar a forma/transformar em método da classe 'Caixa'
+        caixa.listamovimentos.append(nota)
         caixa.calcula_novo_saldo(nota)
 
     def retornar(self):
@@ -70,5 +73,6 @@ class CtrlCaixas:
         self.__continua_na_tela = True
         lista_opcoes = {1: self.cria_caixa, 2: self.consulta_caixa,
                         3: self.retornar}
+        
         while self.__continua_na_tela:
             lista_opcoes[self.__telacaixa.tela_acao()]()

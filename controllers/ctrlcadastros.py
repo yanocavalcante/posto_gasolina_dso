@@ -32,7 +32,7 @@ class CtrlCadastros:
     
     @property
     def lista_produtos(self):
-        return self.__caixa_dao.get_all()
+        return self.__lista_produtos
 
     @property
     def tela_pessoa(self):

@@ -41,11 +41,12 @@ class TelaNotas():
                   [sg.Text('Nome:', size=(12, 1), font=('Verdana', 12)), sg.InputText('', key='nome', size=(25, 1))],
                   [sg.Text('Quantidade:', size=(12, 1), font=('Verdana', 12)),
                     sg.Input('', key = 'qnt', enable_events=True, size=(25, 1))],
+                  [sg.T('')],
                   [sg.Text('Deseja Adicionar Mais Produtos?', font=('Verdana', 12))],
                   [sg.Radio('Sim', 'G3', key= '1', font=('Verdana', 12)),
                    sg.Radio('Não', 'G3', key = '0', font=('Verdana',12))],
                   [sg.T('')],
-                  [sg.B('Confirmar', font=('Verdana', 8))]
+                  [sg.B('Confirmar', font=('Verdana', 9))]
         ]
         self.__window = sg.Window('Menu Notas').Layout(layout)
         while True:
@@ -56,9 +57,6 @@ class TelaNotas():
                     break
                 except ValueError:
                     self.mostra_mensagem('Valor Inválido para "Quantidade"!')
-            elif event == 'Voltar':
-                self.close()
-                self.tela_tipo_nota()
         nome = values['nome']
         if values['1']:
             op = True
