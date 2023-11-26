@@ -9,10 +9,10 @@ class TelaNotaSaida:
     def input_cliente(self):
         sg.theme('DarkAmber')
         layout = [
-                 [sg.Text('Notas', font = ('Helvica', 25))],
-                 [sg.Text('Informe o Cliente da Nota:', font = ('Helvica', 15))],
-                 [sg.Text('Cliente:'), (sg.In('', key='cliente'))],
-                 [sg.B('Confirmar')]
+                 [sg.Text('Notas - Saída', font = ('Verdana', 25))],
+                 [sg.Text('Informe o Cliente:', font = ('Verdana', 15))],
+                 [sg.Text('Cliente:', font=('Verdana')), (sg.In('', key='cliente'))],
+                 [sg.B('Confirmar', font=('Verdana'))]
         ]
         self.__window = sg.Window('Menu Nota de Saída').Layout(layout)
 

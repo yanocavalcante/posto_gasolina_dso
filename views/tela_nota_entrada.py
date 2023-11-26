@@ -9,10 +9,10 @@ class TelaNotaEntrada:
     def input_fornecedor(self):
         sg.theme('DarkAmber')
         layout = [
-                  [sg.Text('Notas', font = ('Helvica', 25))],
-                  [sg.Text('Informe o Fornecedor da Nota:', font = ('Helvica', 15))],
-                  [sg.Text('Fornecedor:'), (sg.In('', key='fornecedor'))],
-                  [sg.B('Confirmar')]
+                  [sg.Text('Notas - Entrada', font = ('Verdana', 25))],
+                  [sg.Text('Informe o Fornecedor:', font = ('Verdana', 15))],
+                  [sg.Text('Fornecedor:', font=('Verdana')), (sg.In('', key='fornecedor'))],
+                  [sg.B('Confirmar', font=('Verdana'))]
         ]
         self.__window = sg.Window('Menu Nota de Entrada').Layout(layout)
 

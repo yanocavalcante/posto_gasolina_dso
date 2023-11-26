@@ -19,9 +19,15 @@ class CtrlCaixas:
     @property
     def listacaixas(self):
         return self.__dao.get_all()
+    
+    def pega_caixas_nome(self):
+        lista_nomes = []
+        for caixa in self.listacaixas:
+            lista_nomes.append(caixa.nome)
+        return lista_nomes
 
     def pergunta_caixa(self):
-        caixa = self.__telacaixa.input_caixa()
+        caixa = self.__telacaixa.input_caixa(self.pega_caixas_nome())
         for caixas in self.listacaixas:
             if caixa == caixas.nome:
                 return caixas
@@ -54,7 +60,7 @@ class CtrlCaixas:
                 elif (caixa.saldo + caixa.credito) + (nota.valor) < 0:
                     self.__telacaixa.mostra_mensagem('AVISO: Operação Cancelada!')
                     return
-        caixa.listamovimentos.append(nota)
+        caixa.listamovimentos.append(nota)      #Mudar a forma/transformar em método da classe 'Caixa'
         caixa.calcula_novo_saldo(nota)
 
     def retornar(self):
