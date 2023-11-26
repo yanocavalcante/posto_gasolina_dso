@@ -3,20 +3,20 @@ from views.tela_nota_saida import TelaNotaSaida
 from views.tela_nota_entrada import TelaNotaEntrada
 from models.notaentrada import NotaEntrada
 from models.notasaida import NotaSaida
-
+from models.notas_dao import NotasDAO
 
 class CtrlNotas:
     def __init__(self, ctrlprincipal):
         self.__ctrlprincipal = ctrlprincipal
         self.__continua_na_tela = True
-        self.__notas = []
+        self.__dao = NotasDAO()
         self.__telanota = TelaNotas()
         self.__telanota_saida = TelaNotaSaida()
         self.__telanota_entrada = TelaNotaEntrada()
 
     @property
     def notas(self):
-        return self.__notas
+        return self.__dao.get_all()
 
     def cadastra_notaSaida(self):
         op = True
@@ -33,7 +33,7 @@ class CtrlNotas:
         cliente_string = values['cliente']
         cliente = self.__ctrlprincipal.ctrlcadastros.verifica_lista_clientes(cliente_string)
         nota = NotaSaida(num, list_prod_nota, cliente)
-        self.__notas.append(nota)
+        self.__dao.add(nota)
         nota.calcula_valor_saida()
         self.__ctrlprincipal.ctrlcaixas.adiciona_movimento(nota)
         for produto in list_prod_nota:
@@ -56,7 +56,7 @@ class CtrlNotas:
         fornecedor_string = values['fornecedor']
         nota = NotaEntrada(num, list_prod_nota, fornecedor_string)
         nota.calcula_valor_entrada()
-        self.__notas.append(nota)
+        self.__dao.add(nota)
         self.__ctrlprincipal.ctrlcaixas.adiciona_movimento(nota)
         for produto in list_prod_nota:
             self.__ctrlprincipal.ctrlcadastros.aumentar_estoque(produto['qnt'], produto['prod'])
@@ -64,7 +64,7 @@ class CtrlNotas:
         self.abre_tela()
 
     def calcula_num_nota(self):
-        num = len(self.__notas) + 1
+        num = len(self.notas) + 1
         return num
 
     def retornar(self):
