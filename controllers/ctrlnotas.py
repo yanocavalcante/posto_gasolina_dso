@@ -35,10 +35,13 @@ class CtrlNotas:
         nota = NotaSaida(num, list_prod_nota, cliente)
         self.__dao.add(nota)
         nota.calcula_valor_saida()
-        self.__ctrlprincipal.ctrlcaixas.adiciona_movimento(nota)
-        for produto in list_prod_nota:
-            self.__ctrlprincipal.ctrlcadastros.diminuir_estoque(produto['qnt'], produto['prod'])
-        self.__telanota.mostra_mensagem('Nota Cadastrada com Sucesso!')            
+        success = self.__ctrlprincipal.ctrlcaixas.adiciona_movimento(nota)
+        if success == True:
+            for produto in list_prod_nota:
+                self.__ctrlprincipal.ctrlcadastros.diminuir_estoque(produto['qnt'], produto['prod'])
+            self.__telanota.mostra_mensagem('Nota Cadastrada com Sucesso!')
+        elif success == False:
+            self.__telanota.mostra_mensagem('AVISO: Nota não cadastrada!')     
         self.abre_tela()
 
     def cadastra_notaEntrada(self):
@@ -57,10 +60,13 @@ class CtrlNotas:
         nota = NotaEntrada(num, list_prod_nota, fornecedor_string)
         nota.calcula_valor_entrada()
         self.__dao.add(nota)
-        self.__ctrlprincipal.ctrlcaixas.adiciona_movimento(nota)
-        for produto in list_prod_nota:
-            self.__ctrlprincipal.ctrlcadastros.aumentar_estoque(produto['qnt'], produto['prod'])
-        self.__telanota.mostra_mensagem('Nota Cadastrada com Sucesso!')
+        success = self.__ctrlprincipal.ctrlcaixas.adiciona_movimento(nota)
+        if success == True:
+            self.__telanota.mostra_mensagem('Nota Cadastrada com Sucesso!')
+            for produto in list_prod_nota:
+                self.__ctrlprincipal.ctrlcadastros.aumentar_estoque(produto['qnt'], produto['prod'])
+        elif success == False:
+            self.__telanota.mostra_mensagem('AVISO: Nota não cadastrada!')
         self.abre_tela()
 
     def calcula_num_nota(self):
