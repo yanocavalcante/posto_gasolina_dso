@@ -71,6 +71,27 @@ class TelaCaixa():
         nome = values['nome']
         self.close()
         return nome
+    
+    def imprime_historico(self, movimentos, saldo_inicial, saldo, credito=0):
+        layout = [
+        [sg.T('Histórico de Movimentações')],
+        [sg.T(f'Saldo Inicial: R$ {saldo_inicial:.2f}')],
+        [sg.T(f'Crédito: {credito}')],
+        [sg.Table(values=list(movimentos.items()),
+                  headings=['N° da Nota', 'Valor da Nota'],
+                  auto_size_columns=False,
+                  justification='right',
+                  num_rows=min(25, len(movimentos)),
+                  col_widths=[10, 10])],
+        [sg.T(f'Saldo Final: R$ {saldo:.2f}')],
+        [sg.Button('Fechar')]
+        ]
+        self.__window = sg.Window('Histórico Caixas').Layout(layout)
+        while True:
+            event, values = self.open()
+            if event == sg.WIN_CLOSED or event == 'Fechar':
+                break
+        self.close()
 
     def init_acao(self):
         sg.theme('DarkAmber')

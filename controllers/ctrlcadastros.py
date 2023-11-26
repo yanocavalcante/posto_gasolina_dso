@@ -22,9 +22,11 @@ class CtrlCadastros:
 
     def instancia_teste(self):
         gasolina = Produto('Combustível', 'Gasolina', 'Atem', 5, 6, 2000, 1)
+        diesel = Produto('Combustível', 'Diesel', 'Atem', 6.5, 7, 2000, 2)
         yano = Cliente('Yano', 15, '12312312312', '12312312312', 2, 'yano', 25)
         self.__lista_pessoas.append(yano)
         self.__lista_produtos.append(gasolina)
+        self.__lista_produtos.append(diesel)
 
     @property
     def lista_pessoas(self):

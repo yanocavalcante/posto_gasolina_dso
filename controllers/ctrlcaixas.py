@@ -1,7 +1,7 @@
-# from views.tela_caixa import TelaCaixa
 from views.tela_caixa_gui import TelaCaixa
 from models.caixa import Caixa
 from models.caixa_dao import CaixaDAO
+
 
 class CtrlCaixas:
     def __init__(self, ctrlprincipal):
@@ -9,12 +9,6 @@ class CtrlCaixas:
         self.__telacaixa = TelaCaixa()
         self.__dao = CaixaDAO()
         self.__continua_na_tela = True
-        #delete-me
-        self.instancia_teste()
-
-    def instancia_teste(self):
-        posto = Caixa('Físico', 'Posto', 2000)
-        self.__dao.add(posto)
 
     @property
     def listacaixas(self):
@@ -36,7 +30,16 @@ class CtrlCaixas:
 
     def consulta_caixa(self):
         caixa = self.pergunta_caixa()
-        self.__telacaixa.imprime_historico(caixa.listamovimentos, caixa)
+        dic_movimentos = {}
+        for movimento in caixa.listamovimentos:
+            dic_movimentos[f'{movimento.num}'] = movimento.valor
+        saldo_inicial = caixa.saldo_inicial
+        saldo_final = caixa.saldo
+        if caixa.tipo == 'Físico':
+            self.__telacaixa.imprime_historico(dic_movimentos, saldo_inicial, saldo_final)
+        elif caixa.tipo == 'Bancário':
+            credito = caixa.credito
+            self.__telacaixa.imprime_historico(dic_movimentos, saldo_inicial, saldo_final, credito)
         self.retornar()
 
     def cria_caixa(self):
@@ -54,7 +57,7 @@ class CtrlCaixas:
             if caixa.tipo == 'Físico':
                 if (caixa.saldo + nota.valor) < 0:
                     self.__telacaixa.mostra_mensagem('AVISO: Operação Cancelada!')
-                    return
+                    return False
             elif caixa.tipo == 'Bancário':
                 if (caixa.saldo + nota.valor) < 0:
                     credito_restante = (caixa.saldo + nota.valor) + caixa.credito
@@ -62,9 +65,11 @@ class CtrlCaixas:
 
                 elif (caixa.saldo + caixa.credito) + (nota.valor) < 0:
                     self.__telacaixa.mostra_mensagem('AVISO: Operação Cancelada!')
-                    return
+                    return False
         caixa.listamovimentos.append(nota)
         caixa.calcula_novo_saldo(nota)
+        self.__dao.add(caixa)
+        return True
 
     def retornar(self):
         self.__continua_na_tela = False

@@ -1,6 +1,7 @@
 class Caixa:
     def __init__(self, tipo: str, nome: str, saldo: float, credito = None) -> None:
         self.__saldo = saldo
+        self.__saldo_inicial = saldo
         self.__tipo = tipo
         self.__nome = nome
         self.__credito = credito
@@ -9,6 +10,14 @@ class Caixa:
     @property
     def saldo(self):
         return self.__saldo
+    
+    @property
+    def saldo_inicial(self):
+        return self.__saldo_inicial
+    
+    @saldo_inicial.setter
+    def saldo_inicial(self, saldo_inicial):
+        self.__saldo_inicial = saldo_inicial
     
     @property
     def tipo(self):
