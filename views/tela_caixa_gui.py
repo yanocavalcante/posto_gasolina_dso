@@ -56,11 +56,11 @@ class TelaCaixa():
         self.close()
         return tipo, nome, saldo, credito
 
-    def input_caixa(self, lista_caixas):
+    def input_caixa(self, lista_caixas= []):
         sg.theme('DarkAmber')
         layout = [
-                  [sg.Text('Caixas', font = ('Verdana', 25))],
-                  [sg.Text('Selecione um Caixa para esta operação.', font= ('Verdana', 18))],
+                  [sg.Text('---Caixas---', font = ('Verdana', 25))],
+                  [sg.Text('Selecione um Caixa.', font= ('Verdana', 18))],
                   [sg.Text('Nome:', font=('Verdana', 12)), sg.InputCombo(lista_caixas, key = 'nome')],
                   [sg.T('')],
                   [sg.B('Confirmar', font=('Verdana', 8))]
