@@ -1,4 +1,4 @@
-# trabalho_dso
+# Trabalho DSO
 Sistema Gerencial para administração de um posto de gasolina a partir do paradigma de programação orientada a objetos.
 Implementação de uma versão simplificada de um sistema computacional que permita o controle de determinados aspectos administrativos inerentes ao funcionamento real de um posto de gasolina.
 
