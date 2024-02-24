@@ -13,12 +13,36 @@ class CtrlCadastros:
         self.__lista_produtos = []
         self.__tela_pessoa = TelaPessoa()
         self.__tela_produto = TelaProduto()
-        self.__tela_cadastros = TelaCadastros()
+        self.__telacadastros = TelaCadastros()
         self.__controlador_principal = controlador_principal
         self.__caixa_dao = CaixaDAO()
-
+        # self.__dao = CadastrosDAO
         #delete-me
         self.instancia_teste()
+
+    #Versão Yano
+        
+    def cadastra(self):
+        pass
+
+    def altera(self):
+        pass
+
+    def consulta(self):
+        pass
+
+    def remove(self):
+        pass
+
+    def retornar(self):
+        self.__continua_na_tela = False
+
+    def abre_tela(self):
+        self.__continua_na_tela = True
+        lista_opcoes = {1: self.cadastra, 2: self.altera, 3: self.consulta,
+                        4: self.remove }
+        while self.__continua_na_tela:
+            lista_opcoes[self.__telacadastros.tela_tipo_crud()]()
 
     def instancia_teste(self):
         gasolina = Produto('Combustível', 'Gasolina', 'Atem', 5, 6, 2000, 1)
@@ -44,9 +68,11 @@ class CtrlCadastros:
     def tela_produto(self):
         return self.__tela_produto
     
+
+    #Versão Colla
     def input_opcao_cadastros(self):
         
-        opcao = self.__tela_cadastros.mostra_opcoes()
+        opcao = self.__telacadastros.mostra_opcoes()
         
         if opcao == 1:
             opcao_produto = self.tela_produto.opcoes_produto()
@@ -152,7 +178,7 @@ class CtrlCadastros:
             elif opcao_pessoa == 2:
                 print("-"*20)
                 self.mostra_lista_pessoas()
-                id_para_alterar = self.__tela_cadastros.input_id_para_alterar()
+                id_para_alterar = self.__telacadastros.input_id_para_alterar()
                 
                 id_para_alterar = self.verifica_id_alterar(id_para_alterar)
 
@@ -163,7 +189,7 @@ class CtrlCadastros:
 
                 info_pessoa = {}
 
-                info_pessoa['nome'], info_pessoa['idade'], info_pessoa['cpf'], info_pessoa['telefone'] = self.__tela_cadastros.opcao_alterar()
+                info_pessoa['nome'], info_pessoa['idade'], info_pessoa['cpf'], info_pessoa['telefone'] = self.__telacadastros.opcao_alterar()
                 
                 info_pessoa = self.verifica_idade(info_pessoa)
                 info_pessoa = self.verifica_cpf(info_pessoa)
@@ -183,7 +209,7 @@ class CtrlCadastros:
                 print("-"*20)
                 print('EXCLUIR PESSOA')         #PRINT NO CONTROLADOR
 
-                id_para_excluir = self.__tela_cadastros.input_id_para_excluir()
+                id_para_excluir = self.__telacadastros.input_id_para_excluir()
 
                 id_para_excluir = self.verifica_id_excluir(id_para_excluir)
 
@@ -261,7 +287,7 @@ class CtrlCadastros:
                 
                 return pessoa
             
-        id_para_alterar = self.__tela_cadastros.input_id_para_alterar()
+        id_para_alterar = self.__telacadastros.input_id_para_alterar()
         return self.verifica_existencia_id_alterar(id_para_alterar)
     
     def verifica_existencia_id_alterar_produto(self, id):
@@ -290,7 +316,7 @@ class CtrlCadastros:
             id = int(id)
             return id
         except ValueError:
-            id = self.__tela_cadastros.input_id_para_alterar()
+            id = self.__telacadastros.input_id_para_alterar()
             return self.verifica_id_alterar(id)
 
     def verifica_id_alterar_produto(self, id):
@@ -318,7 +344,7 @@ class CtrlCadastros:
             id = int(id)
             return id
         except ValueError:
-            id = self.__tela_cadastros.input_id_para_excluir()
+            id = self.__telacadastros.input_id_para_excluir()
             return self.verifica_id_excluir(id)
 
     def verifica_id_excluir_produto(self, id):
@@ -341,7 +367,7 @@ class CtrlCadastros:
                 
                 return pessoa
             
-        id_para_excluir = self.__tela_cadastros.input_id_para_excluir()
+        id_para_excluir = self.__telacadastros.input_id_para_excluir()
         return self.verifica_existencia_id_excluir(id_para_excluir)
     
     def verifica_existencia_id_excluir_produto(self, id):
