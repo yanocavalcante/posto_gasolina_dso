@@ -23,16 +23,16 @@ class CtrlCadastros:
     #Versão Yano
         
     def cadastra(self):
-        pass
+        categoria = self.__telacadastros.input_categoria()
 
     def altera(self):
-        pass
+        categoria = self.__telacadastros.input_categoria()
 
     def consulta(self):
-        pass
+        categoria = self.__telacadastros.input_categoria()
 
-    def remove(self):
-        pass
+    def exclui(self):
+        categoria = self.__telacadastros.input_categoria()
 
     def retornar(self):
         self.__continua_na_tela = False
@@ -40,9 +40,9 @@ class CtrlCadastros:
     def abre_tela(self):
         self.__continua_na_tela = True
         lista_opcoes = {1: self.cadastra, 2: self.altera, 3: self.consulta,
-                        4: self.remove }
+                        4: self.exclui }
         while self.__continua_na_tela:
-            lista_opcoes[self.__telacadastros.tela_tipo_crud()]()
+            lista_opcoes[self.__telacadastros.tela_acao()]()
 
     def instancia_teste(self):
         gasolina = Produto('Combustível', 'Gasolina', 'Atem', 5, 6, 2000, 1)
