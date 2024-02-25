@@ -21,28 +21,55 @@ class CtrlCadastros:
         self.instancia_teste()
 
     #Versão Yano
-        
-    def cadastra(self):
-        categoria = self.__telacadastros.input_categoria()
-
-    def altera(self):
-        categoria = self.__telacadastros.input_categoria()
-
-    def consulta(self):
-        categoria = self.__telacadastros.input_categoria()
-
-    def exclui(self):
-        categoria = self.__telacadastros.input_categoria()
+    def cadastra_produto(self):
+        values = self.__tela_produto.tela_cadastra()
+    def cadastra_cliente(self):
+        values = self.__tela_pessoa.tela_cadastra_cliente()
+    def cadastra_funcionario(self):
+        values = self.__tela_pessoa.tela_cadastra_func()
+    def altera_produto(self):
+        id = self.__tela_produto.input_id()
+    def altera_cliente(self):
+        pass
+    def altera_funcionario(self):
+        pass
+    def consulta_produto(self):
+        pass
+    def consulta_cliente(self):
+        pass
+    def consulta_funcionario(self):
+        pass
+    def exclui_produto(self):
+        id = self.__tela_produto.input_id()
+    def exclui_cliente(self):
+        pass
+    def exclui_funcionario(self):
+        pass      
 
     def retornar(self):
         self.__continua_na_tela = False
 
+    def abre_tela_categoria(self, op = None):
+        if op == 1:
+            lista_opcoes = {1: self.cadastra_produto, 2: self.cadastra_cliente, 3: self.cadastra_funcionario}    
+            lista_opcoes[self.__telacadastros.input_categoria()]()
+        elif op == 2:
+            lista_opcoes = {1: self.altera_produto, 2: self.altera_cliente, 3: self.altera_funcionario}
+            lista_opcoes[self.__telacadastros.input_categoria()]()
+        elif op == 3:
+            lista_opcoes = {1: self.consulta_produto, 2: self.consulta_cliente, 3: self.consulta_funcionario}
+            lista_opcoes[self,self.__telacadastros.input_categoria()]()
+        elif op == 4:
+            lista_opcoes = {1: self.exclui_produto, 2: self.exclui_cliente, 3: self.exclui_funcionario}
+            lista_opcoes[self.__telacadastros.input_categoria()]()
+        else:
+            self.__continua_na_tela = False
+
     def abre_tela(self):
         self.__continua_na_tela = True
-        lista_opcoes = {1: self.cadastra, 2: self.altera, 3: self.consulta,
-                        4: self.exclui }
+
         while self.__continua_na_tela:
-            lista_opcoes[self.__telacadastros.tela_acao()]()
+            self.abre_tela_categoria(self.__telacadastros.input_acao())
 
     def instancia_teste(self):
         gasolina = Produto('Combustível', 'Gasolina', 'Atem', 5, 6, 2000, 1)
@@ -232,9 +259,6 @@ class CtrlCadastros:
         elif opcao == 3:
             
             self.__controlador_principal.mostra_tela_principal()
-        
-        
-            
 
     def verifica_idade(self, info_pessoa):
         try:
@@ -244,7 +268,7 @@ class CtrlCadastros:
         except ValueError:
             info_pessoa['idade'] = self.tela_pessoa.input_idade()
             return self.verifica_idade(info_pessoa)
-        
+
     def verifica_funcionario(self, info_pessoa):
         try:
             if info_pessoa['funcionario'] not in ['S', 'N']:
@@ -254,7 +278,7 @@ class CtrlCadastros:
         except ValueError:
             info_pessoa['funcionario'] = self.tela_pessoa.input_funcionario()
             return self.verifica_funcionario(info_pessoa)
-        
+
     def verifica_cpf(self, info_pessoa):
         try:
             if len(info_pessoa['cpf']) != 11:
@@ -289,7 +313,7 @@ class CtrlCadastros:
             
         id_para_alterar = self.__telacadastros.input_id_para_alterar()
         return self.verifica_existencia_id_alterar(id_para_alterar)
-    
+
     def verifica_existencia_id_alterar_produto(self, id):
         if self.lista_produtos == []:
             print("Não existe nenhum produto na lista!")        #PRINT NO CONTROLADOR
@@ -304,8 +328,7 @@ class CtrlCadastros:
             
         id_para_alterar = self.tela_produto.input_id_para_alterar()
         return self.verifica_existencia_id_alterar_produto(id_para_alterar)
-        
-    
+
     def mostra_lista_pessoas(self):
         print("-"*20)                       #PRINT NO CONTROLADOR
         for pessoa in self.lista_pessoas:
@@ -391,8 +414,7 @@ class CtrlCadastros:
             return info_produto
         except ValueError:
             info_produto['custo'] = input('Digite um custo válido: ')
-            return self.verifica_custo(info_produto)
-        
+            return self.verifica_custo(info_produto)     
 
     def verifica_preco(self, info_produto):
         try:
@@ -414,7 +436,6 @@ class CtrlCadastros:
         print("-"*20)           #PRINT NO CONTROLADOR
         for produto in self.lista_produtos:
             self.tela_produto.mostra_produto(produto)
-
     
     def voltar(self):
         self.input_opcao_cadastros()

@@ -10,17 +10,19 @@ class TelaCadastros(TelaPrincipal):
         sg.theme('DarkAmber')
         sg.Popup(f'{msg}', font = ('Verdana', 12))
 
-    def input_tipo_acao(self):
-        self.init_acao()
+    def input_acao(self):
+        self.tela_acao()
         event, values = self.open()
         if event == 'Cadastrar':
             op = 1
-        if event == 'Alterar':
+        elif event == 'Alterar':
             op = 2
-        if event == 'Consultar':
+        elif event == 'Consultar':
             op = 3
-        if event == 'Excluir':
+        elif event == 'Excluir':
             op = 4
+        elif event == 'Voltar':
+            op = None
         self.close()
         return op
 

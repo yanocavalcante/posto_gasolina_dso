@@ -30,7 +30,7 @@ class CtrlPrincipal:
         self.ctrlnotas.abre_tela()
 
     def mostra_tela_cadastros(self):
-        self.ctrlcadastros.input_opcao_cadastros()
+        self.ctrlcadastros.abre_tela()
 
     def mostra_tela_caixas(self):
         self.ctrlcaixas.abre_tela()

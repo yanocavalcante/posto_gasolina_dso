@@ -1,8 +1,70 @@
+import PySimpleGUI as sg
 
-class TelaProduto:
+
+class TelaProduto():
     def __init__(self) -> None:
-        pass
+        self.__window = None
 
+    def tela_consulta_por_id(self):
+        sg.theme('DarkAmber')
+        layout = [
+                  [sg.Text('---Nome do Produto---', font = ('Verdana',25))],
+                  [sg.B('Sair', font=('Verdana', 9))]
+        ]
+        self.__window = sg.Window('Info Produtos').Layout(layout)
+        return self.open()
+    
+    def tela_consulta_todos(self):
+        sg.theme('DarkAmber')
+        layout = [
+                  [sg.Text('---Nome do Produto---', font = ('Verdana',25))],
+                  [sg.B('Sair', font=('Verdana', 9))]
+        ]
+        self.__window = sg.Window('Info Produtos').Layout(layout)
+        return self.open()
+
+    def input_id(self):
+        sg.theme('DarkAmber')
+        layout = [
+                  [sg.Text('---Produtos---', font = ('Verdana',25))],
+                  [sg.Text('ID do Produto:'),
+                    sg.InputText('', key='id', size=(25,1))],
+                  [sg.B('Confirmar', font=('Verdana', 9))]
+        ]
+        self.__window = sg.Window('Info Produtos').Layout(layout)
+        return self.open()
+
+    def tela_cadastra(self):
+        sg.theme('DarkAmber')
+        layout = [
+                  [sg.Text('---Produtos---', font = ('Verdana',25))],
+                  [sg.Text('Nome:', size=(12, 1), font=('Verdana', 12)),
+                    sg.InputText('', key='nome', size=(25, 1))],
+                  [sg.Text('Categoria:', size=(12,1), font=('Verdana', 12)),
+                    sg.Input('', key = 'cat', size=(25,1))],
+                  [sg.Text('Estoque:', size=(12, 1), font=('Verdana', 12)),
+                    sg.Input('', key = 'est', ize=(25, 1))],                      
+                  [sg.Text('Custo:', size=(12,1), font=('Verdana', 12)),
+                    sg.Input('', key = 'cst', ize=(25,1))],  
+                  [sg.Text('Preço:', size=(12,1), font=('Verdana', 12)),
+                    sg.Input('', key = 'prc', ize=(25,1))],  
+                  [sg.Text('Fornecedor:', size=(12,1), font=('Verdana', 12)),
+                    sg.Input('', key = 'frn', ize=(25,1))],
+                  [sg.T('')],
+                  [sg.B('Confirmar', font=('Verdana', 9))]
+        ]
+        self.__window = sg.Window('Info Produtos').Layout(layout)
+        return self.open()
+
+    def open(self):
+        event, values = self.__window.Read()
+        self.close()
+        return values
+
+    def close(self):
+        self.__window.Close()
+
+    #Versão Colla
     def opcoes_produto(self):
         print("-"*20)
         print("1 - Cadastrar Produto")
@@ -35,7 +97,6 @@ class TelaProduto:
                 print("-"*20)
 
         return opcao
-
 
     def input_info_produto(self):
         print("-"*20)
